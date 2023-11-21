@@ -1,13 +1,17 @@
 import React from 'react';
-import './AnimalList.css';
-
-interface Animal {
-  name: string;
-  photo: string;
-}
 
 interface AnimalListProps {
   animals: Animal[];
+}
+
+interface Animal {
+  nombre: string;
+  genero: string;
+  status: string;
+  tipo: string;
+  edad: number;
+  usuarioId: number;
+  photos: string[];
 }
 
 const AnimalList: React.FC<AnimalListProps> = ({ animals }) => {
@@ -15,9 +19,14 @@ const AnimalList: React.FC<AnimalListProps> = ({ animals }) => {
     <div>
       {animals.length > 0 ? (
         animals.map((animal) => (
-          <div key={animal.name}>
-            <img src={animal.photo} alt={animal.name} />
-            <p>{animal.name}</p>
+          <div key={animal.nombre}>
+            <img src={animal.photos[0]} alt={animal.nombre} />
+            <p>{animal.nombre}</p>
+            <p>Gender: {animal.genero}</p>
+            <p>Status: {animal.status}</p>
+            <p>Type: {animal.tipo}</p>
+            <p>Age: {animal.edad}</p>
+            {/* Add more details as needed */}
           </div>
         ))
       ) : (
