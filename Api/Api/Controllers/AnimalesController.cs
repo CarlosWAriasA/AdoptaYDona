@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Database;
 using Database.Model;
 using Api.DTOs;
+using System.IO;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnimalesController : Controller
+    public class AnimalesController : ControllerBase
     {
         private readonly AdoptaYDonaContext _context;
 
@@ -85,21 +86,43 @@ namespace Api.Controllers
         // POST: api/Animales
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Animal>> PostAnimal([FromBody] AnimalDTO animal)
+        public async Task<Animal> PostAnimal([FromBody] AnimalDTO animal)
         {
-            animal?.Imagenes?.ForEach(i =>
+            try
             {
-                i.ContentByte = Convert.FromBase64String(i.Content);
-            });
-          //if (_context.Animales == null)
-          //{
-          //    return Problem("Entity set 'AdoptaYDonaContext.Animales'  is null.");
-          //}
-            //_context.Animales.Add(new Animal { });
-            //await _context.SaveChangesAsync();
-
-            //return CreatedAtAction("GetAnimal", new { id = animal.Id }, animal);
-            return new Animal { };
+                Animal animalData = new Animal
+                {
+                    Nombre = animal.Nombre,
+                    Genero = animal.Genero,
+                    Edad = animal.Edad,
+                    Tipo = animal.Tipo,
+                    Estatus = AnimalDTO.ESTATUS_ACTIVO,
+                    FechaCreacion = DateTime.Now,
+                    UsuarioId = 1,
+                };
+                _context.Animales.Add(animalData);
+                await _context.SaveChangesAsync();
+                animal?.Imagenes?.ForEach(i =>
+                {
+                    i.ContentByte = Convert.FromBase64String(i.Content);
+                    string imagePath = Path.Combine("Images", $"{Guid.NewGuid().ToString("N")}-{i.Name}");
+                    System.IO.File.WriteAllBytes(imagePath, i.ContentByte);
+                    AnimalImagen animalImagen = new AnimalImagen
+                    {
+                        AnimalId = animalData.Id,
+                        RutaImagen = imagePath
+                    };
+                    _context.AnimalesImagenes.Add(animalImagen);
+                });
+                await _context.SaveChangesAsync();
+                
+                return animalData;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+          
         }
 
         // DELETE: api/Animales/5

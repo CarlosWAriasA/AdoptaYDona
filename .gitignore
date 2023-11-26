@@ -5,6 +5,8 @@
 # Visual Studio Code
 .vscode/
 
+.vs/
+
 # Ignorar archivos de configuración con información sensible
 appsettings.json
 
