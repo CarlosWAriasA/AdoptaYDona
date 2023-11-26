@@ -1,8 +1,8 @@
-﻿using JwtAuthAspNet7WebAPI.Core.Entities;
+﻿using IdentityLayer.Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace JwtAuthAspNet7WebAPI.Core.DbContext
+namespace IdentityLayer.Core.DbContext
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

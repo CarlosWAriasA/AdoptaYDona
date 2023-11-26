@@ -1,4 +1,4 @@
-﻿namespace JwtAuthAspNet7WebAPI.Core.Dtos
+﻿namespace IdentityLayer.Core.Dtos
 {
     public class AuthServiceResponseDto
     {

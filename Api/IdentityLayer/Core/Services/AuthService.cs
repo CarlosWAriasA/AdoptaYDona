@@ -1,14 +1,14 @@
-﻿using JwtAuthAspNet7WebAPI.Core.Dtos;
-using JwtAuthAspNet7WebAPI.Core.Entities;
-using JwtAuthAspNet7WebAPI.Core.Interfaces;
-using JwtAuthAspNet7WebAPI.Core.OtherObjects;
+﻿using IdentityLayer.Core.Dtos;
+using IdentityLayer.Core.Entities;
+using IdentityLayer.Core.Interfaces;
+using IdentityLayer.Core.OtherObjects;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace JwtAuthAspNet7WebAPI.Core.Services
+namespace IdentityLayer.Core.Services
 {
     public class AuthService : IAuthService
     {
@@ -119,7 +119,7 @@ namespace JwtAuthAspNet7WebAPI.Core.Services
                     IsSucceed = false,
                     Message = "UserName Already Exists"
                 };
-            
+
 
             ApplicationUser newUser = new ApplicationUser()
             {
@@ -172,7 +172,7 @@ namespace JwtAuthAspNet7WebAPI.Core.Services
             await _roleManager.CreateAsync(new IdentityRole(StaticUserRoles.USER));
             await _roleManager.CreateAsync(new IdentityRole(StaticUserRoles.ADMIN));
             await _roleManager.CreateAsync(new IdentityRole(StaticUserRoles.OWNER));
-          
+
             return new AuthServiceResponseDto()
             {
                 IsSucceed = true,
