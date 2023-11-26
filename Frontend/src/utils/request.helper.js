@@ -23,13 +23,12 @@ const RequestHelper = {
     }
   ) => {
     try {
-      console.log("making request", data);
       const response = await fetch(url, {
         method: "POST",
         headers: headers,
         body: JSON.stringify(data),
       });
-      console.log(response);
+
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }

@@ -1,35 +1,25 @@
-import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
-import { useContext, createContext, useState } from "react";
+import { MoreVertical } from "lucide-react";
+import { createContext } from "react";
 import { Link } from "react-router-dom";
 
 const SidebarContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(true);
-
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-gray-800 border-r-2 shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <Link to={"/"}>
             <img
-              src="https://img.logoipsum.com/243.svg"
-              className={`overflow-hidden transition-all ${
-                expanded ? "w-32" : "w-0"
-              }`}
+              src="logo.png"
+              className={`overflow-hidden transition-all`}
               alt=""
             />
           </Link>
-          {/* <button
-            onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-black-50 hover:bg-black-100"
-          >
-            {expanded ? <ChevronFirst /> : <ChevronLast />}
-          </button> */}
         </div>
 
-        <SidebarContext.Provider value={{ expanded }}>
+        <SidebarContext.Provider>
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
 
@@ -42,7 +32,7 @@ export default function Sidebar({ children }) {
           <div
             className={`
               flex justify-between items-center
-              overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"}
+              overflow-hidden transition-all w-52 ml-3
           `}
           >
             <div className="leading-4">
@@ -58,8 +48,6 @@ export default function Sidebar({ children }) {
 
 // eslint-disable-next-line react/prop-types
 export function SidebarItem({ icon, text, active, alert, link }) {
-  const { expanded } = useContext(SidebarContext);
-
   return (
     <Link to={link}>
       <li
@@ -76,32 +64,26 @@ export function SidebarItem({ icon, text, active, alert, link }) {
       >
         {icon}
         <span
-          className={`overflow-hidden transition-all text-white ${
-            expanded ? "w-52 ml-3" : "w-0"
-          }`}
+          className={`overflow-hidden transition-all text-white w-52 ml-3 text-lg
+          `}
         >
           {text}
         </span>
         {alert && (
           <div
-            className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
-              expanded ? "" : "top-2"
-            }`}
+            className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 top-2`}
           />
         )}
-
-        {!expanded && (
-          <div
-            className={`
-          absolute left-full rounded-md px-2 py-1 ml-6
+        <div
+          className={`
+          absolute left-full rounded-md px-2 py-1
           bg-indigo-100 text-indigo-800 text-sm
           invisible opacity-20 -translate-x-3 transition-all
           group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
       `}
-          >
-            {text}
-          </div>
-        )}
+        >
+          {text}
+        </div>
       </li>
     </Link>
   );

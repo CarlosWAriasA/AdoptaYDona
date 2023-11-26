@@ -14,14 +14,26 @@ function ImageUploader({ onImageChange }) {
         selectedImages.map((image) => {
           return new Promise((resolve) => {
             const reader = new FileReader();
+            const chunkSize = 8192;
 
             reader.onload = (e) => {
               const arrayBuffer = e.target.result;
+              let binaryString = "";
+
+              for (let i = 0; i < arrayBuffer.byteLength; i += chunkSize) {
+                const chunk = new Uint8Array(
+                  arrayBuffer,
+                  i,
+                  Math.min(chunkSize, arrayBuffer.byteLength - i)
+                );
+                binaryString += String.fromCharCode.apply(null, chunk);
+              }
+
+              const base64EncodedContent = btoa(binaryString);
+
               resolve({
                 file: image,
-                content: btoa(
-                  String.fromCharCode(...new Uint8Array(arrayBuffer))
-                ),
+                content: base64EncodedContent,
               });
             };
 

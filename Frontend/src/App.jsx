@@ -4,6 +4,8 @@ import { LayoutDashboard } from "lucide-react";
 import { Route, Routes } from "react-router-dom";
 import AnimalesList from "./pages/Animales/AnimalesList";
 import AnimalesEdit from "./pages/Animales/AnimalesEdit";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           </Routes>
         </div>
       </div>
+      <ToastContainer />
     </main>
   );
 }

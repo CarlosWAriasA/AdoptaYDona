@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import ImageUploader from "../../components/ImageUpload/ImageUploader";
 import RequestHelper from "../../utils/request.helper";
 import { BASE_URL } from "../../utils/constant";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function AnimalesEdit() {
   const [name, setName] = useState("");
@@ -11,10 +13,11 @@ export default function AnimalesEdit() {
   const [type, setType] = useState("");
   const [age, setAge] = useState("");
   const [imagenes, setImagenes] = useState([]);
+  const navigate = useNavigate();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    RequestHelper.post(`${BASE_URL}/Animales`, {
+    const response = await RequestHelper.post(`${BASE_URL}/Animales`, {
       Nombre: name,
       Genero: genre,
       Tipo: type,
@@ -27,6 +30,15 @@ export default function AnimalesEdit() {
         Content: i.content,
       })),
     });
+
+    if (response) {
+      toast.success("Animal publicado exitosamente", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+      });
+      return navigate("/animales");
+    }
   };
 
   useEffect(() => {
@@ -108,9 +120,9 @@ export default function AnimalesEdit() {
         <ImageUploader onImageChange={setImagenes} />
         <button
           type="submit"
-          className="bg-green-500 text-white py-2 rounded-md w-11/12 text-lg mt-4"
+          className="bg-green-500 text-white py-2 rounded-md w-1/4 text-lg mt-4"
         >
-          Guardar
+          Publicar
         </button>
       </form>
     </main>
