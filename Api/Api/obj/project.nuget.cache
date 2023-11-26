@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W/a1ouvdMZSUm8JXQc9TCmsw0/XODE24qjmXyOn/6Dtwce6VJtwqtwYTqjF37UJVH8uxaGWmo/N8BfSwq1jIXg==",
+  "dgSpecHash": "zT3GM/jPZTsizOKpku0XXLWK7shcE+WFFr0ORW1Lv+IwzQXVUA4KLatIdZ3GWQi8S0DxIi6oAaKrZZ9xISFcvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\raini\\Source\\Repos\\AdoptaYDona\\Api\\Api\\Api.csproj",
+  "projectFilePath": "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raini\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -233,5 +233,12 @@
     "C:\\Users\\raini\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\Api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

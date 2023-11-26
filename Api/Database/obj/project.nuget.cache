@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZudaeEtW2JuEcj+NKmF6M6lwYcJ5YOhZtrP4DYV3ENSOBYl5yfaw4bWhxYgduwN/3YPdnSCVv3qtfV5UzOGhMQ==",
+  "dgSpecHash": "0bEKYn2Zw13NlVMygrYTnNHFtmT7Qc45xwozfh/9Tdkx2hyAlM3UFiEZ2K7WCLKzuw9mLlpoRw1uf0IMhK8ybg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\raini\\Source\\Repos\\AdoptaYDona\\Api\\Database\\Database.csproj",
+  "projectFilePath": "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\Database\\Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raini\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -65,5 +65,12 @@
     "C:\\Users\\raini\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\Database\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
