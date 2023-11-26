@@ -10,7 +10,7 @@ export default function Sidebar({ children }) {
 
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-gray-800 border-r shadow-sm">
+      <nav className="h-full flex flex-col bg-gray-800 border-r-2 shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <Link to={"/"}>
             <img
@@ -21,19 +21,19 @@ export default function Sidebar({ children }) {
               alt=""
             />
           </Link>
-          <button
+          {/* <button
             onClick={() => setExpanded((curr) => !curr)}
             className="p-1.5 rounded-lg bg-black-50 hover:bg-black-100"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
-          </button>
+          </button> */}
         </div>
 
         <SidebarContext.Provider value={{ expanded }}>
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
 
-        <div className="border-t flex p-3">
+        <div className="border-t-2 flex p-3">
           <img
             src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
             alt=""
