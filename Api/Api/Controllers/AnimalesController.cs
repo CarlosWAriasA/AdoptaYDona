@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Database;
 using Database.Model;
+using Api.DTOs;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnimalesController : ControllerBase
+    public class AnimalesController : Controller
     {
         private readonly AdoptaYDonaContext _context;
 
@@ -84,16 +85,21 @@ namespace Api.Controllers
         // POST: api/Animales
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Animal>> PostAnimal(Animal animal)
+        public async Task<ActionResult<Animal>> PostAnimal([FromBody] AnimalDTO animal)
         {
-          if (_context.Animales == null)
-          {
-              return Problem("Entity set 'AdoptaYDonaContext.Animales'  is null.");
-          }
-            _context.Animales.Add(animal);
-            await _context.SaveChangesAsync();
+            animal?.Imagenes?.ForEach(i =>
+            {
+                i.ContentByte = Convert.FromBase64String(i.Content);
+            });
+          //if (_context.Animales == null)
+          //{
+          //    return Problem("Entity set 'AdoptaYDonaContext.Animales'  is null.");
+          //}
+            //_context.Animales.Add(new Animal { });
+            //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAnimal", new { id = animal.Id }, animal);
+            //return CreatedAtAction("GetAnimal", new { id = animal.Id }, animal);
+            return new Animal { };
         }
 
         // DELETE: api/Animales/5

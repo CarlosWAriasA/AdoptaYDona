@@ -12,6 +12,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AdoptaYDonaContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AdoptaYDonaConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DefaultPolicy", app =>
+    {
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -28,6 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("DefaultPolicy");
 
 app.UseAuthorization();
 
