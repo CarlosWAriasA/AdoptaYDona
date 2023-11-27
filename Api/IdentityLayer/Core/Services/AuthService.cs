@@ -49,11 +49,13 @@ namespace IdentityLayer.Core.Services
 
             var authClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim("JWTID", Guid.NewGuid().ToString()),
-                new Claim("FirstName", user.FirstName),
-                new Claim("LastName", user.LastName),
+                new (ClaimTypes.Name, user.UserName),
+                new (ClaimTypes.NameIdentifier, user.Id),
+                new ("JWTID", Guid.NewGuid().ToString()),
+                new ("FirstName", user.FirstName),
+                new ("LastName", user.LastName),
+                new ("Gender",user.Gender),
+                new("Dni",user.Dni),
             };
 
             foreach (var userRole in userRoles)
@@ -128,6 +130,8 @@ namespace IdentityLayer.Core.Services
                 LastName = registerDto.LastName,
                 Email = registerDto.Email,
                 UserName = registerDto.UserName,
+                Gender = registerDto.Gender,
+                Dni = registerDto.Dni,
                 SecurityStamp = Guid.NewGuid().ToString(),
             };
 
