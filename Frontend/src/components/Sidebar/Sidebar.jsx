@@ -9,11 +9,11 @@ export default function Sidebar({ children }) {
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-gray-800 border-r-2 shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
+        <div className="p-4 pb-2 flex justify-between items-center border-b-2 ">
           <Link to={"/"}>
             <img
               src="logo.png"
-              className={`overflow-hidden transition-all`}
+              className={`overflow-hidden transition-all h-36 w-screen`}
               alt=""
             />
           </Link>
