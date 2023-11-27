@@ -19,6 +19,14 @@ namespace IdentityLayer.Core.Dtos
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Dni is required")]
+        public string Dni { get; set; }
+
+        [Required(ErrorMessage = "Gender is required")]
+        public string Gender { get; set; }
+
+
+
 
     }
 }
