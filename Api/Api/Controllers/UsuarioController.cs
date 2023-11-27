@@ -1,21 +1,16 @@
-﻿using JwtAuthAspNet7WebAPI.Core.Dtos;
-using JwtAuthAspNet7WebAPI.Core.Entities;
-using JwtAuthAspNet7WebAPI.Core.Interfaces;
-using JwtAuthAspNet7WebAPI.Core.OtherObjects;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+﻿using IdentityLayer.Core.Dtos;
+using IdentityLayer.Core.Interfaces;
 
-namespace JwtAuthAspNet7WebAPI.Controllers
+using Microsoft.AspNetCore.Mvc;
+
+
+
+namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
-    { 
+    {
         private readonly IAuthService _authService;
 
         public AuthController(IAuthService authService)
@@ -28,7 +23,7 @@ namespace JwtAuthAspNet7WebAPI.Controllers
         [Route("seed-roles")]
         public async Task<IActionResult> SeedRoles()
         {
-             var seerRoles = await _authService.SeedRolesAsync();
+            var seerRoles = await _authService.SeedRolesAsync();
 
             return Ok(seerRoles);
         }
@@ -55,22 +50,22 @@ namespace JwtAuthAspNet7WebAPI.Controllers
         {
             var loginResult = await _authService.LoginAsync(loginDto);
 
-            if(loginResult.IsSucceed)
+            if (loginResult.IsSucceed)
                 return Ok(loginResult);
 
             return Unauthorized(loginResult);
         }
 
-        
+
 
         // Route -> make user -> admin
         [HttpPost]
         [Route("make-admin")]
         public async Task<IActionResult> MakeAdmin([FromBody] UpdatePermissionDto updatePermissionDto)
         {
-             var operationResult = await _authService.MakeAdminAsync(updatePermissionDto);
+            var operationResult = await _authService.MakeAdminAsync(updatePermissionDto);
 
-            if(operationResult.IsSucceed)
+            if (operationResult.IsSucceed)
                 return Ok(operationResult);
 
             return BadRequest(operationResult);
