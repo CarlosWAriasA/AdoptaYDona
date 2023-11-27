@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "FXIZZ/8Wam6gvwmrVxlU+wh5XC7sOKoiMP79Lka25WnadSXSZ9vhHXUZC5y0fD9RXj5Bpnbe8xF/TZ7Iia/2cg==",
-  "success": false,
+  "dgSpecHash": "Wqt/HoN5s1HbaL586ecIIFzHpp3hQWhoukqOyrqCrtnN6Vbsn1nUS6ulekgk/JPEWXSwUDohghZ4CfBM6miuVg==",
+  "success": true,
   "projectFilePath": "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raini\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
@@ -83,10 +83,10 @@
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.14\\microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.14\\microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.14\\microsoft.entityframeworkcore.analyzers.7.0.14.nupkg.sha512",
-    "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.13\\microsoft.entityframeworkcore.design.7.0.13.nupkg.sha512",
+    "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.14\\microsoft.entityframeworkcore.design.7.0.14.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.14\\microsoft.entityframeworkcore.relational.7.0.14.nupkg.sha512",
-    "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.13\\microsoft.entityframeworkcore.sqlserver.7.0.13.nupkg.sha512",
-    "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.13\\microsoft.entityframeworkcore.tools.7.0.13.nupkg.sha512",
+    "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.14\\microsoft.entityframeworkcore.sqlserver.7.0.14.nupkg.sha512",
+    "C:\\Users\\raini\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.14\\microsoft.entityframeworkcore.tools.7.0.14.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
@@ -239,15 +239,5 @@
     "C:\\Users\\raini\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\raini\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore.SqlServer from 7.0.14 to 7.0.13. Reference the package directly from the project to select a different version. \r\n Api -> IdentityLayer -> Microsoft.EntityFrameworkCore.SqlServer (>= 7.0.14) \r\n Api -> Microsoft.EntityFrameworkCore.SqlServer (>= 7.0.13)",
-      "libraryId": "Microsoft.EntityFrameworkCore.SqlServer",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
