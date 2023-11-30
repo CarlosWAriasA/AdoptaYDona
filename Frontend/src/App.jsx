@@ -34,8 +34,14 @@ function App() {
 							<Route path='/' Component={() => <div>Home Page</div>} />
 							<Route path='/animales' Component={AnimalesList} />
 							<Route path='/animales-edit' Component={AnimalesEdit} />
-							<Route path='/login' Component={Login} />
-							<Route path='/register' Component={Register} />
+							<Route
+								path='/login'
+								Component={() => <Login setShowSidebar={setShowSidebar} />}
+							/>
+							<Route
+								path='/register'
+								Component={() => <Register setShowSidebar={setShowSidebar} />}
+							/>
 							<Route path='profile' Component={Profile}></Route>
 						</Routes>
 					</div>
