@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState, useEffect } from "react"
-import { AuthContext } from "./AuthContext"
+import { AuthContext } from "../../utils/AuthContext"
 import axios from "axios"
-import LogoutButton from "./LoggoutButtom"
+import LogoutButton from "../../components/login/LoginButtom"
+
 
 export default function Profile() {
 	const { token } = useContext(AuthContext)

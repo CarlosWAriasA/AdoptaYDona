@@ -10,7 +10,8 @@ import Login from "./pages/login/login"
 import Register from "./pages/Register/Register"
 import { useState } from "react"
 import Profile from "./pages/login/profile"
-import { AuthProvider } from "./pages/login/AuthContext"
+import { AuthProvider } from "./utils/AuthContext"
+
 
 function App() {
 	const [showSidebar, setShowSidebar] = useState(true)

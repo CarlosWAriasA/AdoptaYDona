@@ -56,7 +56,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='userName'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium text-white'
 				>
 					Usuario
 				</label>
@@ -72,7 +72,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='firstName'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium text-white'
 				>
 					Nombre
 				</label>
@@ -88,7 +88,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='lastName'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium  text-white'
 				>
 					Apellido
 				</label>
@@ -104,7 +104,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='email'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium  text-white'
 				>
 					Email
 				</label>
@@ -120,7 +120,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='password'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium  text-white'
 				>
 					Contraseña
 				</label>
@@ -136,7 +136,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='dni'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium text-white'
 				>
 					DNI
 				</label>
@@ -152,7 +152,7 @@ const RegistrationForm = () => {
 			<div className='mb-4'>
 				<label
 					htmlFor='gender'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium text-white'
 				>
 					Género
 				</label>

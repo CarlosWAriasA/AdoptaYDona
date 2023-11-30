@@ -1,8 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react"
 
-import RegistrationForm from "./RegisterForm"
+import RegistrationForm from "../../components/register/RegisterForm"
 
 export default function Register() {
-	return <RegistrationForm></RegistrationForm>
+	return (
+		<div className='mt-16'>
+			<RegistrationForm></RegistrationForm>
+		</div>
+	)
 }

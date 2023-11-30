@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useContext, useEffect } from "react"
-import { AuthContext } from "./AuthContext"
+import { AuthContext } from "../../utils/AuthContext"
 
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
@@ -54,7 +54,7 @@ export default function LoginForm() {
 			<div className='mb-4'>
 				<label
 					htmlFor='userName'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium text-white'
 				>
 					Email o Usuario
 				</label>
@@ -70,7 +70,7 @@ export default function LoginForm() {
 			<div className='mb-6'>
 				<label
 					htmlFor='password'
-					className='block mb-2 text-sm font-medium text-gray-700'
+					className='block mb-2 text-sm font-medium text-white'
 				>
 					Contraseña
 				</label>

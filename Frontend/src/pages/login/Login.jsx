@@ -1,6 +1,10 @@
 // import React, { useEffect } from "react"
-import LoginForm from "./LoginForm"
+import LoginForm from "../../components/login/LoginForm"
 
 export default function login() {
-	return <LoginForm></LoginForm>
+	return (
+		<div className='mt-72'>
+			<LoginForm></LoginForm>
+		</div>
+	)
 }
