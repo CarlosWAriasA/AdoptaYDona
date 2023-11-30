@@ -33,7 +33,7 @@ export default function LoginForm() {
 				password: password,
 				token: token,
 			}
-			navigate("/profile")
+			navigate("/")
 			window.localStorage.setItem("loggedNoteUser", JSON.stringify(user))
 		} catch (error) {
 			console.error(error.response.data)
@@ -45,7 +45,7 @@ export default function LoginForm() {
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON)
 			login(user.token)
-			navigate("/profile")
+			navigate("/")
 		}
 	}, [])
 
