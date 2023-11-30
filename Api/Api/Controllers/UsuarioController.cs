@@ -1,6 +1,7 @@
 ﻿using IdentityLayer.Core.Dtos;
 using IdentityLayer.Core.Interfaces;
-
+using IdentityLayer.Core.OtherObjects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -10,7 +11,14 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
+
     {
+
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
         private readonly IAuthService _authService;
 
         public UsuarioController(IAuthService authService)
@@ -82,6 +90,14 @@ namespace Api.Controllers
                 return Ok(operationResult);
 
             return BadRequest(operationResult);
+        }
+
+        [HttpGet]
+        [Route("GetUserRole")]
+        [Authorize(Roles = StaticUserRoles.USER)]
+        public IActionResult GetUserRole()
+        {
+            return Ok(Summaries);
         }
     }
 }

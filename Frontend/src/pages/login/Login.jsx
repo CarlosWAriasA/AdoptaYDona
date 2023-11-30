@@ -1,0 +1,6 @@
+// import React, { useEffect } from "react"
+import LoginForm from "./LoginForm"
+
+export default function login() {
+	return <LoginForm></LoginForm>
+}
