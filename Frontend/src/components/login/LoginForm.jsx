@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../utils/AuthContext"
 
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Registerbuttom from "../register/RegisterButtom"
 
-export default function LoginForm() {
+export default function LoginForm({ setShowSidebar }) {
 	const [emailOrUsername, setEmailOrUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const { login } = useContext(AuthContext)
@@ -33,62 +35,68 @@ export default function LoginForm() {
 				password: password,
 				token: token,
 			}
-			navigate("/")
-			window.localStorage.setItem("loggedNoteUser", JSON.stringify(user))
+			setShowSidebar(true)
+			navigate("/profile")
+
+			window.localStorage.setItem("user", JSON.stringify(user))
 		} catch (error) {
 			console.error(error.response.data)
 		}
 	}
 
 	useEffect(() => {
-		const loggedUserJSON = window.localStorage.getItem("loggedNoteUser")
+		const loggedUserJSON = window.localStorage.getItem("user")
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON)
 			login(user.token)
-			navigate("/")
+			setShowSidebar(true)
+			navigate("/profile")
 		}
 	}, [])
 
 	return (
-		<form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
-			<div className='mb-4'>
-				<label
-					htmlFor='userName'
-					className='block mb-2 text-sm font-medium text-white'
+		<div>
+			<form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
+				<div className='mb-4'>
+					<label
+						htmlFor='userName'
+						className='block mb-2 text-sm font-medium text-white'
+					>
+						Email o Usuario
+					</label>
+					<input
+						type='text'
+						id='userName'
+						className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
+						value={emailOrUsername}
+						onChange={(e) => setEmailOrUsername(e.target.value)}
+						required
+					/>
+				</div>
+				<div className='mb-6'>
+					<label
+						htmlFor='password'
+						className='block mb-2 text-sm font-medium text-white'
+					>
+						Contraseña
+					</label>
+					<input
+						type='password'
+						id='password'
+						className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+				</div>
+				<button
+					type='submit'
+					className='w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600'
 				>
-					Email o Usuario
-				</label>
-				<input
-					type='text'
-					id='userName'
-					className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
-					value={emailOrUsername}
-					onChange={(e) => setEmailOrUsername(e.target.value)}
-					required
-				/>
-			</div>
-			<div className='mb-6'>
-				<label
-					htmlFor='password'
-					className='block mb-2 text-sm font-medium text-white'
-				>
-					Contraseña
-				</label>
-				<input
-					type='password'
-					id='password'
-					className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					required
-				/>
-			</div>
-			<button
-				type='submit'
-				className='w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600'
-			>
-				Iniciar sesión
-			</button>
-		</form>
+					Iniciar sesión
+				</button>
+				<Registerbuttom></Registerbuttom>
+			</form>
+		</div>
 	)
 }

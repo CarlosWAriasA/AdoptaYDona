@@ -1,8 +1,10 @@
 import axios from "axios"
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-const RegistrationForm = () => {
+// eslint-disable-next-line react/prop-types
+const RegistrationForm = ({ setShowSidebar }) => {
 	const [userName, setUserName] = useState("")
 	const [firstName, setFirstName] = useState("")
 	const [lastName, setLastName] = useState("")
@@ -10,8 +12,9 @@ const RegistrationForm = () => {
 	const [password, setPassword] = useState("")
 	const [dni, setDni] = useState("")
 	const [gender, setGender] = useState("")
+	const navigate = useNavigate()
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 
 		const formData = {
@@ -32,14 +35,19 @@ const RegistrationForm = () => {
 			},
 		}
 
-		axios
-			.post("https://localhost:7092/api/Usuario/register", jsonData, config)
-			.then((response) => {
-				console.log(response.data)
-			})
-			.catch((error) => {
-				console.error(error.response.data)
-			})
+		try {
+			const response = await axios.post(
+				"https://localhost:7092/api/Usuario/register",
+				jsonData,
+				config
+			)
+			console.log(response.data)
+			setShowSidebar(true)
+			navigate("/login")
+		} catch (error) {
+			console.log(error.response.data)
+		}
+
 		console.log(formData)
 
 		setUserName("")

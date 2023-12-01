@@ -2,8 +2,8 @@
 import React, { useContext, useState, useEffect } from "react"
 import { AuthContext } from "../../utils/AuthContext"
 import axios from "axios"
-import LogoutButton from "../../components/login/LoginButtom"
 
+import LogoutButton from "../../components/login/LogoutButtom"
 
 export default function Profile() {
 	const { token } = useContext(AuthContext)

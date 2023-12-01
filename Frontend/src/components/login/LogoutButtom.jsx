@@ -9,8 +9,8 @@ export default function LogoutButton() {
 
 	const handleLogout = () => {
 		logout()
-		window.localStorage.removeItem("loggedNoteUser")
-		navigate("/")
+		window.localStorage.removeItem("user")
+		navigate("/login")
 		console.log(logout)
 	}
 

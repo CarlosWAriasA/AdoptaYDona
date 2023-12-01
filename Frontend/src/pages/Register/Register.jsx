@@ -11,7 +11,7 @@ export default function Register({ setShowSidebar }) {
 
 	return (
 		<div className='mt-16 mr-40'>
-			<RegistrationForm></RegistrationForm>
+			<RegistrationForm setShowSidebar={setShowSidebar}></RegistrationForm>
 		</div>
 	)
 }

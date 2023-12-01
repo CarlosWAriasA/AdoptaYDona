@@ -1,5 +1,5 @@
 import "./App.css";
-import Sidebar, { SidebarItem } from "./components/Sidebar/Sidebar";
+import Sidebar, { SidebarItem } from "./components/Sidebar/Sidebar"
 import { LayoutDashboard } from "lucide-react"
 import { Route, Routes } from "react-router-dom"
 import AnimalesList from "./pages/Animales/AnimalesList"
