@@ -36,7 +36,7 @@ export default function LoginForm({ setShowSidebar }) {
 				token: token,
 			}
 			setShowSidebar(true)
-			navigate("/profile")
+			navigate("/animales")
 
 			window.localStorage.setItem("user", JSON.stringify(user))
 		} catch (error) {
@@ -50,7 +50,7 @@ export default function LoginForm({ setShowSidebar }) {
 			const user = JSON.parse(loggedUserJSON)
 			login(user.token)
 			setShowSidebar(true)
-			navigate("/profile")
+			navigate("/animales")
 		}
 	}, [])
 

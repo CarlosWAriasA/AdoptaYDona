@@ -11,10 +11,13 @@ import Register from "./pages/Register/Register"
 import { useState } from "react"
 import Profile from "./pages/login/profile"
 import { AuthProvider } from "./utils/AuthContext"
-
+import ProtectedRoute from "./utils/ProtectedRoute"
+import { useLocalStorage } from "react-use"
 
 function App() {
 	const [showSidebar, setShowSidebar] = useState(true)
+
+	const [user, setUser] = useLocalStorage("user")
 	return (
 		<main className='App w-screen'>
 			<AuthProvider>
@@ -31,9 +34,20 @@ function App() {
 
 					<div className='w-5/6'>
 						<Routes>
-							<Route path='/' Component={() => <div>Home Page</div>} />
-							<Route path='/animales' Component={AnimalesList} />
-							<Route path='/animales-edit' Component={AnimalesEdit} />
+							<Route
+								path='/'
+								Component={() => (
+									<Login setShowSidebar={setShowSidebar}></Login>
+								)}
+							/>
+							<Route element={<ProtectedRoute canActivate={user} />}>
+								<Route path='/animales' Component={AnimalesList} />
+							</Route>
+
+							<Route element={<ProtectedRoute canActivate={user} />}>
+								<Route path='/animales-edit' Component={AnimalesList} />
+							</Route>
+
 							<Route
 								path='/login'
 								Component={() => <Login setShowSidebar={setShowSidebar} />}
