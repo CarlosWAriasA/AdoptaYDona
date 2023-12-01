@@ -86,7 +86,7 @@ namespace Api.Controllers
         // POST: api/Animales
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<Animal> PostAnimal([FromBody] AnimalDTO animal)
+        public async Task<AnimalDTO> PostAnimal([FromBody] AnimalDTO animal)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace Api.Controllers
                 });
                 await _context.SaveChangesAsync();
                 
-                return animalData;
+                return animal;
             }
             catch (Exception e)
             {

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { BASE_URL } from "../../utils/constant";
 
 const AnimalList = () => {
   const [animals, setAnimals] = useState([]);
@@ -7,10 +8,10 @@ const AnimalList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/Animales');
-        
+        const response = await fetch(`${BASE_URL}/Animales`);
+
         if (!response.ok) {
-          throw new Error('Error al obtener la lista de animales');
+          throw new Error("Error al obtener la lista de animales");
         }
 
         const animalData = await response.json();
@@ -18,7 +19,7 @@ const AnimalList = () => {
         setAnimals(animalData);
         setHasAnimals(animalData.length > 0);
       } catch (error) {
-        console.error('Error al obtener la lista de animales', error);
+        console.error("Error al obtener la lista de animales", error);
       }
     };
 
@@ -27,25 +28,50 @@ const AnimalList = () => {
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Lista de Animales</h2>
       {hasAnimals ? (
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {animals.map(animal => (
-            <div key={animal.id} style={{ margin: '10px', textAlign: 'center', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '8px', overflow: 'hidden', maxWidth: '200px' }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {animals.map((animal) => (
+            <div
+              key={animal.id}
+              style={{
+                margin: "10px",
+                textAlign: "center",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                borderRadius: "8px",
+                overflow: "hidden",
+                maxWidth: "200px",
+              }}
+            >
               <img
                 src={animal.imagen}
                 alt={animal.nombre}
-                style={{ width: '100%', height: '150px', objectFit: 'cover', borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}
+                style={{
+                  width: "100%",
+                  height: "150px",
+                  objectFit: "cover",
+                  borderTopLeftRadius: "8px",
+                  borderTopRightRadius: "8px",
+                }}
               />
-              <div style={{ padding: '10px' }}>
-                <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{animal.nombre}</p>
+              <div style={{ padding: "10px" }}>
+                <p style={{ fontWeight: "bold", marginBottom: "5px" }}>
+                  {animal.nombre}
+                </p>
                 {/* Puedes agregar más información del animal aquí si es necesario */}
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <p style={{ textAlign: 'center' }}>No hay animales registrados en el sistema</p>
+        <p style={{ textAlign: "center" }}>
+          No hay animales registrados en el sistema
+        </p>
       )}
     </div>
   );
