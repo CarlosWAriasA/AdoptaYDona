@@ -1,15 +1,23 @@
 import "./App.css";
 import Sidebar, { SidebarItem } from "./components/Sidebar/Sidebar";
-import { LayoutDashboard } from "lucide-react";
+import { LayoutDashboard, Repeat } from "lucide-react";
 import { Route, Routes } from "react-router-dom";
 import AnimalesList from "./pages/Animales/AnimalesList";
 import AnimalesEdit from "./pages/Animales/AnimalesEdit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import 'animate.css';
 
 function App() {
   return (
-    <main className="App w-screen">
+ 
+<body>
+
+
+  
+ 
+  
+    <main className="App w-screen"  style={{ backgroundImage: "url('rose-petals.png')"}} >
       <div className="flex items-start">
         <div className="w-1/6">
           <Sidebar>
@@ -21,15 +29,27 @@ function App() {
           </Sidebar>
         </div>
         <div className="w-5/6">
+
           <Routes>
-            <Route path="/" Component={() => <div>Home Page</div>} />
+            <Route path="/" Component={() =>    <div></div> } />
             <Route path="/animales" Component={AnimalesList} />
             <Route path="/animales-edit" Component={AnimalesEdit} />
+              
           </Routes>
+                
         </div>
+        
+
       </div>
+       
       <ToastContainer />
+
+        
+
     </main>
+ 
+   
+    </body>
   );
 }
 
