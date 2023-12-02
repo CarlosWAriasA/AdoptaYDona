@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import ToastHelper from "../../utils/toast.helper";
 
 export default function AnimalesEdit() {
+
+
   const [name, setName] = useState("");
   const [genre, setGenre] = useState("");
   const [type, setType] = useState("");
@@ -39,6 +41,10 @@ export default function AnimalesEdit() {
     return true;
   };
 
+
+
+
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
@@ -63,12 +69,18 @@ export default function AnimalesEdit() {
     }
   };
 
+
+
+
+  
+
   return (
     <main
       style={{
         width: "100%",
       }}
     >
+      
       <div style={{ borderBottom: "2px solid white" }}>
         <div className="flex mt-3">
           <Link to={"/animales"} title="Volver Atras">
@@ -77,68 +89,78 @@ export default function AnimalesEdit() {
           <h2 className="text-3xl font-bold mt-1">
             Publicar Animal Para Adopción
           </h2>
-        </div>
+        </div>  
       </div>
-      <form onSubmit={onSubmit} className="mt-4 ms-4">
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium">
-            Nombre
-          </label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-          />
-        </div>
+    
+   <form onSubmit={onSubmit} className="flex flex-col items-center mt-4">
+    <div className="form-container"> 
+  <div className="wrapper">
+    <label htmlFor="name" className="block text-sm font-medium">
+      Nombre
+    </label>
+    <input
+      type="text"
+      id="name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+       
+    />
+  </div><br></br>
+ 
+  <div className="wrapper">
+    <label htmlFor="genre" className="block text-sm font-medium">
+      Genero
+    </label>
+    <input
+      type="text"
+      id="genre"
+      value={genre}
+      onChange={(e) => setGenre(e.target.value)}
+       
+    />
+  </div><br></br>
 
-        <div className="mb-4">
-          <label htmlFor="genre" className="block text-sm font-medium">
-            Genero
-          </label>
-          <input
-            type="text"
-            id="genre"
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-            className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-          />
-        </div>
+  <div className="wrapper">
+    <label htmlFor="type" className="block text-sm font-medium">
+      Tipo
+    </label>
+    <input
+      type="text"
+      id="type"
+      value={type}
+      onChange={(e) => setType(e.target.value)}
+       
+    />
+  </div><br></br>
 
-        <div className="mb-4">
-          <label htmlFor="type" className="block text-sm font-medium ">
-            Tipo
-          </label>
-          <input
-            type="text"
-            id="type"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-          />
-        </div>
+  <div className="wrapper">
+    <label htmlFor="age"  className="block text-sm font-medium">
+      Edad
+    </label>
+    <input
+      type="number"
+      id="age"
+      value={age}
+      onChange={(e) => setAge(e.target.value)}
+       
+    />
+  </div><br></br>
+ 
+  <ImageUploader id="img" onImageChange={setImagenes} />
 
-        <div className="mb-4">
-          <label htmlFor="age" className="block text-sm font-medium ">
-            Edad
-          </label>
-          <input
-            type="number"
-            id="age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-          />
-        </div>
-        <ImageUploader onImageChange={setImagenes} />
-        <button
-          type="submit"
-          className="bg-green-500 text-white py-2 rounded-md w-1/4 text-lg mt-4"
-        >
-          Publicar
-        </button>
-      </form>
+  
+
+  <button
+    type="submit"
+      
+  >
+    Publicar
+  </button>
+  </div>
+</form>
+ 
+ 
     </main>
+    
   );
 }

@@ -7,7 +7,8 @@ import AnimalesEdit from "./pages/Animales/AnimalesEdit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import 'animate.css';
-
+ 
+ 
 function App() {
   return (
  
@@ -15,8 +16,7 @@ function App() {
 
 
   
- 
-  
+    
     <main className="App w-screen"  style={{ backgroundImage: "url('rose-petals.png')"}} >
       <div className="flex items-start">
         <div className="w-1/6">
@@ -43,7 +43,7 @@ function App() {
       </div>
        
       <ToastContainer />
-
+ 
         
 
     </main>
