@@ -13,3 +13,17 @@ C:\Users\raini\OneDrive\Escritorio\AdoptaYdona\AdoptaYDona\Api\Database\obj\Debu
 C:\Users\raini\OneDrive\Escritorio\AdoptaYdona\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.pdb
 C:\Users\raini\OneDrive\Escritorio\AdoptaYdona\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.genruntimeconfig.cache
 C:\Users\raini\OneDrive\Escritorio\AdoptaYdona\AdoptaYDona\Api\Database\obj\Debug\net7.0\ref\Database.dll
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\bin\Debug\net7.0\Database.deps.json
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\bin\Debug\net7.0\Database.runtimeconfig.json
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\bin\Debug\net7.0\Database.dll
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\bin\Debug\net7.0\Database.pdb
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.csproj.AssemblyReference.cache
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.AssemblyInfoInputs.cache
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.AssemblyInfo.cs
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.dll
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\refint\Database.dll
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.pdb
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.genruntimeconfig.cache
+C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\ref\Database.dll

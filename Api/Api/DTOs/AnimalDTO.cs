@@ -4,6 +4,7 @@ namespace Api.DTOs
 {
     public class AnimalDTO
     {
+        public static string ESTATUS_ACTIVO = "A";
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Genero { get; set; }

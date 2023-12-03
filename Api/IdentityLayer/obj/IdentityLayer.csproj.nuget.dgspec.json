@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\IdentityLayer\\IdentityLayer.csproj": {}
+    "C:\\Users\\carlo\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\C-6\\Introduccion a la Ingenieria de Software\\Proyecto Final\\Api\\IdentityLayer\\IdentityLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\IdentityLayer\\IdentityLayer.csproj": {
+    "C:\\Users\\carlo\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\C-6\\Introduccion a la Ingenieria de Software\\Proyecto Final\\Api\\IdentityLayer\\IdentityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\IdentityLayer\\IdentityLayer.csproj",
+        "projectUniqueName": "C:\\Users\\carlo\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\C-6\\Introduccion a la Ingenieria de Software\\Proyecto Final\\Api\\IdentityLayer\\IdentityLayer.csproj",
         "projectName": "IdentityLayer",
-        "projectPath": "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\IdentityLayer\\IdentityLayer.csproj",
-        "packagesPath": "C:\\Users\\raini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\raini\\OneDrive\\Escritorio\\AdoptaYdona\\AdoptaYDona\\Api\\IdentityLayer\\obj\\",
+        "projectPath": "C:\\Users\\carlo\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\C-6\\Introduccion a la Ingenieria de Software\\Proyecto Final\\Api\\IdentityLayer\\IdentityLayer.csproj",
+        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carlo\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\C-6\\Introduccion a la Ingenieria de Software\\Proyecto Final\\Api\\IdentityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\raini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
