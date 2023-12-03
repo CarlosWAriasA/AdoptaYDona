@@ -15,6 +15,7 @@ const AnimalList = () => {
         }
 
         const animalData = await response.json();
+        console.log(animalData);
         setAnimals(animalData);
         setHasAnimals(animalData.length > 0);
       } catch (error) {
@@ -48,7 +49,11 @@ const AnimalList = () => {
               }}
             >
               <img
-                src={animal.imagen}
+                src={
+                  animal.imagenes?.length > 0
+                    ? `data:image/jpeg;base64,${animal.imagenes[0]?.content}`
+                    : ""
+                }
                 alt={animal.nombre}
                 style={{
                   width: "100%",
