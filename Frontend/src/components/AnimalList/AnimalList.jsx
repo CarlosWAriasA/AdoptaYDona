@@ -49,7 +49,11 @@ const AnimalList = () => {
               }}
             >
               <img
-                src={animal.imagen}
+                src={
+                  animal.imagenes?.length > 0
+                    ? `data:image/jpeg;base64,${animal.imagenes[0]?.content}`
+                    : ""
+                }
                 alt={animal.nombre}
                 style={{
                   width: "100%",
