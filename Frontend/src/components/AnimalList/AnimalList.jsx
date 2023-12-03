@@ -15,7 +15,6 @@ const AnimalList = () => {
         }
 
         const animalData = await response.json();
-
         setAnimals(animalData);
         setHasAnimals(animalData.length > 0);
       } catch (error) {
