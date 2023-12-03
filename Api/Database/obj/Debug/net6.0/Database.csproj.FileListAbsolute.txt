@@ -12,3 +12,18 @@ C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Int
 C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net6.0\Database.pdb
 C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
 C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net6.0\ref\Database.dll
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\bin\Debug\net6.0\Database.deps.json
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\bin\Debug\net6.0\Database.runtimeconfig.json
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\bin\Debug\net6.0\Database.dll
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\bin\Debug\net6.0\Database.pdb
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.csproj.AssemblyReference.cache
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.AssemblyInfoInputs.cache
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.AssemblyInfo.cs
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.sourcelink.json
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.dll
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\refint\Database.dll
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.pdb
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\Database.genruntimeconfig.cache
+C:\Users\raini\Source\Repos\AdoptaYDona\Api\Database\obj\Debug\net6.0\ref\Database.dll

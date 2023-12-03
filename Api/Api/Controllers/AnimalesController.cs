@@ -9,6 +9,7 @@ using Database;
 using Database.Model;
 using Api.DTOs;
 using System.IO;
+using System.Drawing;
 
 namespace Api.Controllers
 {
@@ -25,13 +26,45 @@ namespace Api.Controllers
 
         // GET: api/Animales
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Animal>>> GetAnimales()
+        public async Task<ActionResult<IEnumerable<AnimalDTO>>> GetAnimales()
         {
           if (_context.Animales == null)
           {
               return NotFound();
           }
-            return await _context.Animales.ToListAsync();
+          var animales = await _context.Animales.ToListAsync();
+            List<AnimalDTO> animalDTOs= new List<AnimalDTO>();
+            foreach (var animal in animales)
+            {
+                var animalDTO = new AnimalDTO()
+                {
+                    Id= animal.Id,
+                    Genero = animal.Genero,
+                    Edad= animal.Edad,
+                    Estatus=animal.Estatus,
+                    FechaCreacion=animal.FechaCreacion,
+                    Nombre = animal.Nombre,
+                    Tipo = animal.Tipo,
+                    UsuarioId = animal.UsuarioId
+                };
+                var imagenes = _context.AnimalesImagenes.Where(a => a.AnimalId == animal.Id);
+                if (imagenes.Any())
+                {
+                    animalDTO.Imagenes = new List<AnimalImagenDTO>();
+                    foreach (var imagen in imagenes)
+                    {
+                        byte[] bytesImagen = System.IO.File.ReadAllBytes(imagen.RutaImagen);
+                        string base64String = Convert.ToBase64String(bytesImagen);
+                        animalDTO?.Imagenes.Add(new AnimalImagenDTO
+                        {
+                            Content = base64String,
+
+                        });
+                    }
+                }
+                animalDTOs.Add(animalDTO);
+            }
+            return animalDTOs;
         }
 
         // GET: api/Animales/5

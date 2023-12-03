@@ -1,8 +1,8 @@
 import { MoreVertical } from "lucide-react";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-const SidebarContext = createContext();
+export const SidebarContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export default function Sidebar({ children }) {
@@ -19,7 +19,7 @@ export default function Sidebar({ children }) {
           </Link>
         </div>
 
-        <SidebarContext.Provider>
+        <SidebarContext.Provider value={useState(true)}>
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
 
