@@ -27,13 +27,12 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
       const response = await axios.post(`${BASE_URL}/Usuario/login`, formData);
 
       const token = response.data.message;
-
-      login(token);
-      const user = {
-        userName: emailOrUsername,
-        password: password,
-        token: token,
-      };
+		const userId = response.data.userId
+		login(token)
+		const user = {
+			userId: userId,
+			token: token,
+		}
 
       window.localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
