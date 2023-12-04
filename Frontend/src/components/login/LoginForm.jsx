@@ -26,29 +26,16 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
     try {
       const response = await axios.post(`${BASE_URL}/Usuario/login`, formData);
 
-<<<<<<< HEAD
 			const token = response.data.message
 			const userId = response.data.userId
 			console.log(response.data)
 			login(token)
 			const user = {
-				userName: emailOrUsername,
-				password: password,
 				token: token,
 				userId: userId,
 			}
 			setShowSidebar(true)
 			navigate("/animales")
-=======
-      const token = response.data.message;
-
-      login(token);
-      const user = {
-        userName: emailOrUsername,
-        password: password,
-        token: token,
-      };
->>>>>>> refs/remotes/origin/login
 
       window.localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
