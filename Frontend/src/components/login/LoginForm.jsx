@@ -28,12 +28,14 @@ export default function LoginForm({ setShowSidebar }) {
 			)
 
 			const token = response.data.message
-
+			const userId = response.data.userId
+			console.log(response.data)
 			login(token)
 			const user = {
 				userName: emailOrUsername,
 				password: password,
 				token: token,
+				userId: userId,
 			}
 			setShowSidebar(true)
 			navigate("/animales")

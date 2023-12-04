@@ -44,9 +44,7 @@ function App() {
 								<Route path='/animales' Component={AnimalesList} />
 							</Route>
 
-							<Route element={<ProtectedRoute canActivate={user} />}>
-								<Route path='/animales-edit' Component={AnimalesList} />
-							</Route>
+							<Route path='/animales-edit' Component={AnimalesEdit} />
 
 							<Route
 								path='/login'
