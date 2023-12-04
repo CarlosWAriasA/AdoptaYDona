@@ -12,3 +12,17 @@ C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Int
 C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.pdb
 C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\Database.genruntimeconfig.cache
 C:\Users\carlo\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\C-6\Introduccion a la Ingenieria de Software\Proyecto Final\Api\Database\obj\Debug\net7.0\ref\Database.dll
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\bin\Debug\net7.0\Database.deps.json
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\bin\Debug\net7.0\Database.runtimeconfig.json
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\bin\Debug\net7.0\Database.dll
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\bin\Debug\net7.0\Database.pdb
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.csproj.AssemblyReference.cache
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.AssemblyInfoInputs.cache
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.AssemblyInfo.cs
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.dll
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\refint\Database.dll
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.pdb
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\Database.genruntimeconfig.cache
+C:\Users\hp\OneDrive\Escritorio\ITLA\9no cuatrimestre\Introducción a la Ingeniería de Software\AdoptaYDona-main\AdoptaYDona\Api\Database\obj\Debug\net7.0\ref\Database.dll
