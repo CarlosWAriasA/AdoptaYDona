@@ -28,43 +28,63 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AnimalDTO>>> GetAnimales()
         {
-          if (_context.Animales == null)
-          {
-              return NotFound();
-          }
-          var animales = await _context.Animales.ToListAsync();
-            List<AnimalDTO> animalDTOs= new List<AnimalDTO>();
-            foreach (var animal in animales)
+            try
             {
-                var animalDTO = new AnimalDTO()
+                if (_context.Animales == null)
                 {
-                    Id= animal.Id,
-                    Genero = animal.Genero,
-                    Edad= animal.Edad,
-                    Estatus=animal.Estatus,
-                    FechaCreacion=animal.FechaCreacion,
-                    Nombre = animal.Nombre,
-                    Tipo = animal.Tipo,
-                    UsuarioId = animal.UsuarioId
-                };
-                var imagenes = _context.AnimalesImagenes.Where(a => a.AnimalId == animal.Id);
-                if (imagenes.Any())
-                {
-                    animalDTO.Imagenes = new List<AnimalImagenDTO>();
-                    foreach (var imagen in imagenes)
-                    {
-                        byte[] bytesImagen = System.IO.File.ReadAllBytes(imagen.RutaImagen);
-                        string base64String = Convert.ToBase64String(bytesImagen);
-                        animalDTO?.Imagenes.Add(new AnimalImagenDTO
-                        {
-                            Content = base64String,
-
-                        });
-                    }
+                    return NotFound();
                 }
-                animalDTOs.Add(animalDTO);
+                var animales = await _context.Animales.ToListAsync();
+                List<AnimalDTO> animalDTOs = new List<AnimalDTO>();
+                foreach (var animal in animales)
+                {
+                    var animalDTO = new AnimalDTO()
+                    {
+                        Id = animal.Id,
+                        Genero = animal.Genero,
+                        Edad = animal.Edad,
+                        Estatus = animal.Estatus,
+                        FechaCreacion = animal.FechaCreacion,
+                        Nombre = animal.Nombre,
+                        Tipo = animal.Tipo,
+                        UsuarioId = animal.UsuarioId
+                    };
+                    var imagenes = _context.AnimalesImagenes.Where(a => a.AnimalId == animal.Id);
+                    if (imagenes.Any())
+                    {
+                        animalDTO.Imagenes = new List<AnimalImagenDTO>();
+                        foreach (var imagen in imagenes)
+                        {
+                            try
+                            {
+
+                                byte[] bytesImagen = System.IO.File.ReadAllBytes(imagen.RutaImagen);
+                                if (bytesImagen.Length > 0)
+                                {
+                                    string base64String = Convert.ToBase64String(bytesImagen);
+                                    animalDTO?.Imagenes.Add(new AnimalImagenDTO
+                                    {
+                                        Content = base64String,
+
+                                    });
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                // no hacer nada en este caso
+                            }
+                        }
+                    }
+                    animalDTOs.Add(animalDTO);
+                }
+                return animalDTOs;
             }
-            return animalDTOs;
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+      
         }
 
         // GET: api/Animales/5

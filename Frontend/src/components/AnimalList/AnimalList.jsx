@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../utils/constant";
-import defaultImage from '../../../public/default.jpg'; // Ruta de la imagen por defecto
+import defaultImage from "../../assets/default.jpg"; // Ruta de la imagen por defecto
+import ToastHelper from "../../utils/toast.helper";
+import AnimalSkeleton from "../Skeletons/AnimalSkeleton";
 
 const AnimalList = () => {
   const [animals, setAnimals] = useState([]);
   const [hasAnimals, setHasAnimals] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch(`${BASE_URL}/Animales`);
@@ -21,6 +25,9 @@ const AnimalList = () => {
         setHasAnimals(animalData.length > 0);
       } catch (error) {
         console.error("Error al obtener la lista de animales", error);
+        ToastHelper.errorToast(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -29,7 +36,19 @@ const AnimalList = () => {
 
   return (
     <div style={{ maxHeight: "calc(90vh - 0px)", overflowY: "auto" }}>
-      {hasAnimals ? (
+      {isLoading ? (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {Array.from({ length: 8 }, (_, index) => (
+            <AnimalSkeleton key={index} />
+          ))}
+        </div>
+      ) : hasAnimals ? (
         <div
           style={{
             display: "flex",
@@ -55,9 +74,11 @@ const AnimalList = () => {
               }}
             >
               <img
-                src={animal.imagenes?.length > 0
-                  ? `data:image/jpeg;base64,${animal.imagenes[0]?.content}`
-                  : defaultImage}
+                src={
+                  animal.imagenes?.length > 0
+                    ? `data:image/jpeg;base64,${animal.imagenes[0]?.content}`
+                    : defaultImage
+                }
                 alt={animal.nombre}
                 style={{
                   width: "100%",
