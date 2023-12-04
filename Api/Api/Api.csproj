@@ -26,4 +26,12 @@
     <ProjectReference Include="..\IdentityLayer\IdentityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 </Project>

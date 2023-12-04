@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowBigLeft } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ImageUploader from "../../components/ImageUpload/ImageUploader";
 import RequestHelper from "../../utils/request.helper";
 import { BASE_URL } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import ToastHelper from "../../utils/toast.helper";
 
 export default function AnimalesEdit() {
   const [name, setName] = useState("");
@@ -15,35 +15,53 @@ export default function AnimalesEdit() {
   const [imagenes, setImagenes] = useState([]);
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const response = await RequestHelper.post(`${BASE_URL}/Animales`, {
-      Nombre: name,
-      Genero: genre,
-      Tipo: type,
-      Edad: age,
-      Estatus: "A",
-      Imagenes: imagenes.map((i) => ({
-        Name: i.file.name,
-        Size: i.file.size,
-        Type: i.file.type,
-        Content: i.content,
-      })),
-    });
-
-    if (response) {
-      toast.success("Animal publicado exitosamente", {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-      });
-      return navigate("/animales");
+  const validate = () => {
+    if (name === null || name === "") {
+      ToastHelper.errorToast("El nombre es requerido");
+      return false;
     }
+    if (genre === null || genre === "") {
+      ToastHelper.errorToast("El genero es requerido");
+      return false;
+    }
+    if (type === null || type === "") {
+      ToastHelper.errorToast("El tipo es requerido");
+      return false;
+    }
+    if (age === null || age === "") {
+      ToastHelper.errorToast("La edad es requerida");
+      return false;
+    }
+    if (imagenes === null || imagenes.length < 1) {
+      ToastHelper.errorToast("Al menos una imagen es requerida");
+      return false;
+    }
+    return true;
   };
 
-  useEffect(() => {
-    console.log(imagenes);
-  }, [imagenes]);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (validate()) {
+      const response = await RequestHelper.post(`${BASE_URL}/Animales`, {
+        Nombre: name,
+        Genero: genre,
+        Tipo: type,
+        Edad: age,
+        Estatus: "A",
+        Imagenes: imagenes.map((i) => ({
+          Name: i.file.name,
+          Size: i.file.size,
+          Type: i.file.type,
+          Content: i.content,
+        })),
+      });
+
+      if (response) {
+        ToastHelper.successToast("Animal publicado exitosamente");
+        return navigate("/animales");
+      }
+    }
+  };
 
   return (
     <main
@@ -72,7 +90,6 @@ export default function AnimalesEdit() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-            required
           />
         </div>
 
@@ -86,7 +103,6 @@ export default function AnimalesEdit() {
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
             className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-            required
           />
         </div>
 
@@ -100,7 +116,6 @@ export default function AnimalesEdit() {
             value={type}
             onChange={(e) => setType(e.target.value)}
             className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-            required
           />
         </div>
 
@@ -114,7 +129,6 @@ export default function AnimalesEdit() {
             value={age}
             onChange={(e) => setAge(e.target.value)}
             className="mt-1 p-2 w-1/3 border rounded-md bg-white text-black"
-            required
           />
         </div>
         <ImageUploader onImageChange={setImagenes} />
