@@ -26,6 +26,7 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
     try {
       const response = await axios.post(`${BASE_URL}/Usuario/login`, formData);
 
+
 			const token = response.data.message
 			const userId = response.data.userId
 			console.log(response.data)
@@ -36,6 +37,16 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
 			}
 			setShowSidebar(true)
 			navigate("/animales")
+
+       const token = response.data.message
+		   const userId = response.data.userId
+				login(token)
+				console.log(response.data.userId)
+				const user = {
+					userId: userId,
+					token: token,
+				}
+
 
       window.localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {

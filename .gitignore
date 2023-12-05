@@ -5,6 +5,9 @@
 # Visual Studio Code
 .vscode/
 
+bin/
+obj/
+
 .vs/
 
 # Ignorar archivos de configuración con información sensible

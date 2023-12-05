@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../utils/constant";
+import defaultImage from "../../assets/default.jpg"; // Ruta de la imagen por defecto
+import ToastHelper from "../../utils/toast.helper";
+import AnimalSkeleton from "../Skeletons/AnimalSkeleton";
 
 const AnimalList = () => {
   const [animals, setAnimals] = useState([]);
   const [hasAnimals, setHasAnimals] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch(`${BASE_URL}/Animales`);
@@ -20,6 +25,9 @@ const AnimalList = () => {
         setHasAnimals(animalData.length > 0);
       } catch (error) {
         console.error("Error al obtener la lista de animales", error);
+        ToastHelper.errorToast(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -27,8 +35,20 @@ const AnimalList = () => {
   }, []);
 
   return (
-    <div>
-      {hasAnimals ? (
+    <div style={{ maxHeight: "calc(90vh - 0px)", overflowY: "auto" }}>
+      {isLoading ? (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {Array.from({ length: 8 }, (_, index) => (
+            <AnimalSkeleton key={index} />
+          ))}
+        </div>
+      ) : hasAnimals ? (
         <div
           style={{
             display: "flex",
@@ -40,31 +60,53 @@ const AnimalList = () => {
             <div
               key={animal.id}
               style={{
-                margin: "10px",
+                margin: "20px",
                 textAlign: "center",
+                position: "relative",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 borderRadius: "8px",
                 overflow: "hidden",
-                maxWidth: "200px",
+                width: "250px",
+                height: "250px",
+                background: "#2d3748",
+                color: "#fff",
+                border: "2px solid #fff",
               }}
             >
               <img
-                src={animal.imagen}
+                src={
+                  animal.imagenes?.length > 0
+                    ? `data:image/jpeg;base64,${animal.imagenes[0]?.content}`
+                    : defaultImage
+                }
                 alt={animal.nombre}
                 style={{
                   width: "100%",
-                  height: "150px",
+                  height: "200px",
                   objectFit: "cover",
                   borderTopLeftRadius: "8px",
                   borderTopRightRadius: "8px",
                 }}
               />
-              <div style={{ padding: "10px" }}>
+              <div style={{ padding: "10px 10px 5px 10px" }}>
                 <p style={{ fontWeight: "bold", marginBottom: "5px" }}>
                   {animal.nombre}
                 </p>
-                {/* Puedes agregar más información del animal aquí si es necesario */}
               </div>
+              <p
+                style={{
+                  position: "absolute",
+                  top: "5px",
+                  right: "5px",
+                  color: "#fff",
+                  background: "#2d3748",
+                  padding: "3px",
+                  borderRadius: "2px",
+                  fontWeight: "bold",
+                }}
+              >
+                {animal.tipo}
+              </p>
             </div>
           ))}
         </div>
