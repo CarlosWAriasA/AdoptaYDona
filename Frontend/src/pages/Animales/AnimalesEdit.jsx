@@ -6,6 +6,7 @@ import RequestHelper from "../../utils/request.helper";
 import { BASE_URL } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 import ToastHelper from "../../utils/toast.helper";
+import { useLocalStorage } from "react-use";
 
 export default function AnimalesEdit() {
   const [name, setName] = useState("");
@@ -13,6 +14,7 @@ export default function AnimalesEdit() {
   const [type, setType] = useState("");
   const [age, setAge] = useState("");
   const [imagenes, setImagenes] = useState([]);
+  const [user, setUser] = useLocalStorage("user");
   const navigate = useNavigate();
 
   const validate = () => {
@@ -54,6 +56,7 @@ export default function AnimalesEdit() {
           Type: i.file.type,
           Content: i.content,
         })),
+        UsuarioId: user.userId,
       });
 
       if (response) {

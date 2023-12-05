@@ -20,6 +20,5 @@ namespace Database.Model
         public string Ubicacion { get; set; }
         public string? RutaImagen { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public virtual ICollection<Animal> Animales { get; set; }
     }
 }

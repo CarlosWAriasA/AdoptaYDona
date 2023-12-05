@@ -133,7 +133,7 @@ namespace IdentityLayer.Core.Services
                 UserName = registerDto.UserName,
                 Gender = registerDto.Gender,
                 Dni = registerDto.Dni,
-                SecurityStamp = Guid.NewGuid().ToString(),
+                SecurityStamp = Guid.NewGuid().ToString(),                
             };
 
             var createUserResult = await _userManager.CreateAsync(newUser, registerDto.Password);

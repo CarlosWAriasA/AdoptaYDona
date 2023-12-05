@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IdentityLayer.Core.Entities;
 
 namespace Database.Model
 {
@@ -18,12 +19,9 @@ namespace Database.Model
         public string Estatus { get; set; }
         public string Tipo { get; set; }
         public int? Edad { get; set; }
-        public int UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         public virtual ICollection<AnimalImagen> Imagenes { get; set; }
-
-        [ForeignKey("UsuarioId")]
-        public virtual Usuario Usuario { get; set; }
     }
 }

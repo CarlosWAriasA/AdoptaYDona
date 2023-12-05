@@ -151,7 +151,7 @@ namespace Api.Controllers
                     Tipo = animal.Tipo,
                     Estatus = AnimalDTO.ESTATUS_ACTIVO,
                     FechaCreacion = DateTime.Now,
-                    UsuarioId = 1,
+                    UsuarioId = animal.UsuarioId,
                 };
                 _context.Animales.Add(animalData);
                 await _context.SaveChangesAsync();

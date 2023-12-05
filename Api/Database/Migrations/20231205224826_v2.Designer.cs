@@ -4,6 +4,7 @@ using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(AdoptaYDonaContext))]
-    partial class AdoptaYDonaContextModelSnapshot : ModelSnapshot
+    [Migration("20231205224826_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,12 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Animales");
                 });
@@ -181,6 +189,13 @@ namespace Database.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("Database.Model.Animal", b =>
+                {
+                    b.HasOne("Database.Model.Usuario", null)
+                        .WithMany("Animales")
+                        .HasForeignKey("UsuarioId1");
+                });
+
             modelBuilder.Entity("Database.Model.AnimalImagen", b =>
                 {
                     b.HasOne("Database.Model.Animal", "Animal")
@@ -241,6 +256,11 @@ namespace Database.Migrations
             modelBuilder.Entity("Database.Model.Animal", b =>
                 {
                     b.Navigation("Imagenes");
+                });
+
+            modelBuilder.Entity("Database.Model.Usuario", b =>
+                {
+                    b.Navigation("Animales");
                 });
 #pragma warning restore 612, 618
         }

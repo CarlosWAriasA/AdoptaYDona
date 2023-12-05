@@ -56,7 +56,7 @@ namespace Api.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
-            var loginResult = await _authService.LoginAsync(loginDto);
+            var loginResult = await _authService.LoginAsync(loginDto);            
 
             if (loginResult.IsSucceed)
                 return Ok(loginResult);
