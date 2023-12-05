@@ -68,7 +68,8 @@ namespace IdentityLayer.Core.Services
             return new AuthServiceResponseDto()
             {
                 IsSucceed = true,
-                Message = token
+                Message = token,
+                userId = user.Id,
             };
         }
 
