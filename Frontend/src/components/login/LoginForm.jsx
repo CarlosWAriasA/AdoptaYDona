@@ -7,6 +7,7 @@ import Registerbuttom from "../register/RegisterButtom";
 import { BASE_URL } from "../../utils/constant";
 import "./login.css";
 import { useLocalStorage } from "react-use";
+import ToastHelper from "../../utils/toast.helper";
 
 export default function LoginForm({ setShowSidebar = () => {} }) {
   const [user, setUser] = useLocalStorage("user");
@@ -26,17 +27,18 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
     try {
       const response = await axios.post(`${BASE_URL}/Usuario/login`, formData);
 
-       const token = response.data.message
-		const userId = response.data.userId
-		login(token)
-		const user = {
-			userId: userId,
-			token: token,
-			userName: emailOrUsername,
-		}
+      const token = response.data.message;
+      const userId = response.data.userId;
+      login(token);
+      const user = {
+        userId: userId,
+        token: token,
+        userName: emailOrUsername,
+      };
 
       window.localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
+      ToastHelper.errorToast(error.message);
       console.error(error);
     }
   };
