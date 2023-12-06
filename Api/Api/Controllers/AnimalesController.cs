@@ -10,6 +10,7 @@ using Database.Model;
 using Api.DTOs;
 using System.IO;
 using System.Drawing;
+using IdentityLayer.Migrations;
 
 namespace Api.Controllers
 {
@@ -26,7 +27,7 @@ namespace Api.Controllers
 
         // GET: api/Animales
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnimalDTO>>> GetAnimales()
+        public async Task<ActionResult<IEnumerable<AnimalDTO>>> GetAnimales([FromQuery] AnimalDTO.Where? where)
         {
             try
             {
@@ -35,6 +36,7 @@ namespace Api.Controllers
                     return NotFound();
                 }
                 var animales = await _context.Animales.ToListAsync();
+                animales = filterAnimales(animales, where);
                 List<AnimalDTO> animalDTOs = new List<AnimalDTO>();
                 foreach (var animal in animales)
                 {
@@ -196,6 +198,32 @@ namespace Api.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        private List<Animal> filterAnimales(List<Animal> animales, AnimalDTO.Where where)
+        {
+            var query = animales.AsQueryable();
+            if (where.SoloMis.HasValue && where.SoloMis.Value && !string.IsNullOrWhiteSpace(where.UsuarioId))
+            {
+                query = query.Where(a => a.UsuarioId == where.UsuarioId);
+            }
+            if (!string.IsNullOrWhiteSpace(where.Nombre))
+            {
+                query = query.Where(a => a.Nombre.Contains(where.Nombre));
+            }
+            if (!string.IsNullOrWhiteSpace(where.Genero))
+            {
+                query = query.Where(a => a.Genero.Contains(where.Genero));
+            }
+            if (!string.IsNullOrWhiteSpace(where. Tipo))
+            {
+                query = query.Where(a => a.Tipo.Contains(where.Tipo));
+            }
+            if (where.Edad.HasValue && where.Edad != null && where.Edad >= 0)
+            {
+                query = query.Where(a => a.Edad == where.Edad);
+            }
+            return query.ToList();
         }
 
         private bool AnimalExists(int id)
