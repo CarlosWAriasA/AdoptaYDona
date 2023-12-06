@@ -4,7 +4,7 @@ const ToastHelper = {
   errorToast: (message) => {
     toast.error(message, {
       position: "bottom-right",
-      autoClose: 2000,
+      autoClose: 4000,
       hideProgressBar: true,
     });
   },
@@ -13,7 +13,7 @@ const ToastHelper = {
     message,
       {
         position: "bottom-right",
-        autoClose: 2000,
+        autoClose: 4000,
         hideProgressBar: true,
       };
   },

@@ -3,36 +3,48 @@ import { BASE_URL } from "../../utils/constant";
 import defaultImage from "../../assets/default.jpg"; // Ruta de la imagen por defecto
 import ToastHelper from "../../utils/toast.helper";
 import AnimalSkeleton from "../Skeletons/AnimalSkeleton";
+import { useLocalStorage } from "react-use";
 
-const AnimalList = () => {
+const AnimalList = ({ where, fetchData }) => {
   const [animals, setAnimals] = useState([]);
   const [hasAnimals, setHasAnimals] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useLocalStorage("user");
+
+  const searchData = async (where) => {
+    setIsLoading(true);
+    try {
+      const queryParams = new URLSearchParams({
+        ...where,
+        UsuarioId: user?.userId,
+      }).toString();
+      const url = `${BASE_URL}/Animales?${queryParams}`;
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("Error al obtener la lista de animales");
+      }
+
+      const animalData = await response.json();
+
+      setAnimals(animalData);
+      setHasAnimals(animalData.length > 0);
+    } catch (error) {
+      console.error("Error al obtener la lista de animales", error);
+      ToastHelper.errorToast(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/Animales`);
-
-        if (!response.ok) {
-          throw new Error("Error al obtener la lista de animales");
-        }
-
-        const animalData = await response.json();
-
-        setAnimals(animalData);
-        setHasAnimals(animalData.length > 0);
-      } catch (error) {
-        console.error("Error al obtener la lista de animales", error);
-        ToastHelper.errorToast(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
+    searchData();
   }, []);
+
+  useEffect(() => {
+    searchData(where);
+  }, [fetchData]);
 
   return (
     <div style={{ maxHeight: "calc(90vh - 0px)", overflowY: "auto" }}>
@@ -94,6 +106,7 @@ const AnimalList = () => {
                 </p>
               </div>
               <p
+                className="rounded-lg"
                 style={{
                   position: "absolute",
                   top: "5px",
@@ -111,8 +124,8 @@ const AnimalList = () => {
           ))}
         </div>
       ) : (
-        <p style={{ textAlign: "center" }}>
-          No hay animales registrados en el sistema
+        <p className="mt-44 text-lg" style={{ textAlign: "center" }}>
+          No se encontraron Animales
         </p>
       )}
     </div>

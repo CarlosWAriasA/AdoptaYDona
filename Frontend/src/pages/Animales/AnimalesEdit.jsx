@@ -44,24 +44,28 @@ export default function AnimalesEdit() {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      const response = await RequestHelper.post(`${BASE_URL}/Animales`, {
-        Nombre: name,
-        Genero: genre,
-        Tipo: type,
-        Edad: age,
-        Estatus: "A",
-        Imagenes: imagenes.map((i) => ({
-          Name: i.file.name,
-          Size: i.file.size,
-          Type: i.file.type,
-          Content: i.content,
-        })),
-        UsuarioId: user.userId,
-      });
-
-      if (response) {
-        ToastHelper.successToast("Animal publicado exitosamente");
-        return navigate("/animales");
+      try {
+        const response = await RequestHelper.post(`${BASE_URL}/Animales`, {
+          Nombre: name,
+          Genero: genre,
+          Tipo: type,
+          Edad: age,
+          Estatus: "A",
+          Imagenes: imagenes.map((i) => ({
+            Name: i.file.name,
+            Size: i.file.size,
+            Type: i.file.type,
+            Content: i.content,
+          })),
+          UsuarioId: user.userId,
+        });
+        console.log(response);
+        if (response) {
+          ToastHelper.successToast("Animal publicado exitosamente");
+          return navigate("/animales");
+        }
+      } catch (error) {
+        ToastHelper.errorToast(error.message);
       }
     }
   };
