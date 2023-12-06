@@ -15,16 +15,9 @@ namespace Database.Model
         public int Id { get; set; }
 
         public int AnimalId { get; set; }
-        public int UsuarioEmisorId { get; set; }
-        public int UsuarioReceptorId { get; set; }
+        public string UsuarioEmisorId { get; set; }
 
         [ForeignKey("AnimalId")]
         public virtual Animal Animal { get; set; }
-
-        [ForeignKey("UsuarioEmisorId")]
-        public virtual Usuario UsuarioEmisor { get; set; }
-
-        [ForeignKey("UsuarioReceptorId")]
-        public virtual Usuario UsuarioReceptor { get; set; }
     }
 }

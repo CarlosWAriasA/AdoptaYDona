@@ -94,19 +94,13 @@ namespace Database.Migrations
                     b.Property<int>("AnimalId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsuarioEmisorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsuarioReceptorId")
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioEmisorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnimalId");
-
-                    b.HasIndex("UsuarioEmisorId");
-
-                    b.HasIndex("UsuarioReceptorId");
 
                     b.ToTable("AnimalesSolicitudes");
                 });
@@ -119,26 +113,20 @@ namespace Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Entidad")
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UsuarioEmisorId")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioEmisorId")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UsuarioReceptorId")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioReceptorId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioEmisorId");
-
-                    b.HasIndex("UsuarioReceptorId");
 
                     b.ToTable("Mensajes");
                 });
@@ -200,42 +188,7 @@ namespace Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Database.Model.Usuario", "UsuarioEmisor")
-                        .WithMany()
-                        .HasForeignKey("UsuarioEmisorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Database.Model.Usuario", "UsuarioReceptor")
-                        .WithMany()
-                        .HasForeignKey("UsuarioReceptorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Animal");
-
-                    b.Navigation("UsuarioEmisor");
-
-                    b.Navigation("UsuarioReceptor");
-                });
-
-            modelBuilder.Entity("Database.Model.Mensaje", b =>
-                {
-                    b.HasOne("Database.Model.Usuario", "UsuarioEmisor")
-                        .WithMany()
-                        .HasForeignKey("UsuarioEmisorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Database.Model.Usuario", "UsuarioReceptor")
-                        .WithMany()
-                        .HasForeignKey("UsuarioReceptorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("UsuarioEmisor");
-
-                    b.Navigation("UsuarioReceptor");
                 });
 
             modelBuilder.Entity("Database.Model.Animal", b =>

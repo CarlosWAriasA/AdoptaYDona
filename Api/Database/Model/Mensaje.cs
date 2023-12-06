@@ -13,15 +13,9 @@ namespace Database.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Entidad { get; set; }
-        public int? UsuarioEmisorId { get; set; }
-        public int? UsuarioReceptorId { get; set; }
+        public string Descripcion { get; set; }
+        public string? UsuarioEmisorId { get; set; }
+        public string? UsuarioReceptorId { get; set; }
         public DateTime FechaCreacion { get; set; }
-
-        [ForeignKey("UsuarioEmisorId")]
-        public virtual Usuario UsuarioEmisor { get; set; }
-
-        [ForeignKey("UsuarioReceptorId")]
-        public virtual Usuario UsuarioReceptor { get; set; }
     }
 }

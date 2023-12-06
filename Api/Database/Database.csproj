@@ -18,4 +18,8 @@
     <ProjectReference Include="..\IdentityLayer\IdentityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
