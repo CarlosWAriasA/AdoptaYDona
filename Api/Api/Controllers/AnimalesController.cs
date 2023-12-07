@@ -10,7 +10,7 @@ using Database.Model;
 using Api.DTOs;
 using System.IO;
 using System.Drawing;
-using IdentityLayer.Migrations;
+//using IdentityLayer.Migrations;
 
 namespace Api.Controllers
 {
