@@ -59,7 +59,7 @@ export default function AnimalesEdit() {
           })),
           UsuarioId: user.userId,
         });
-        console.log(response);
+
         if (response) {
           ToastHelper.successToast("Animal publicado exitosamente");
           return navigate("/animales");

@@ -10,12 +10,11 @@ const ToastHelper = {
   },
 
   successToast: (message) => {
-    message,
-      {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: true,
-      };
+    toast.success(message, {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: true,
+    });
   },
 };
 

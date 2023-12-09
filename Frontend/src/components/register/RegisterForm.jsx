@@ -41,7 +41,7 @@ const RegistrationForm = ({ setShowSidebar }) => {
 
     try {
       await axios.post(`${BASE_URL}/Usuario/register`, jsonData, config);
-      setShowSidebar(true);
+      ToastHelper.successToast("Usuario Creado Correctamente");
       setUserName("");
       setFirstName("");
       setLastName("");
@@ -49,8 +49,7 @@ const RegistrationForm = ({ setShowSidebar }) => {
       setPassword("");
       setDni("");
       setGender("");
-      ToastHelper.successToast("Usuario Creado Correctamente");
-      navigate("/login");
+      return navigate("/login");
     } catch (error) {
       console.error(error);
       ToastHelper.errorToast(error.response.data);

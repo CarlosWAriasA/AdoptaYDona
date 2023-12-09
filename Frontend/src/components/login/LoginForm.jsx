@@ -65,7 +65,7 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
               htmlFor="userName"
               className="block mb-2 text-sm font-medium text-black"
             >
-              Email o Usuario
+              Usuario
             </label>
             <input
               type="text"
