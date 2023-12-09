@@ -14,33 +14,34 @@ import { AuthProvider } from "./utils/AuthContext";
 import { useLocalStorage } from "react-use";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { useNavigate } from "react-router-dom";
+import LoginForm from "./components/login/LoginForm";
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
   const [user, setUser] = useLocalStorage("user");
+  const [showSidebar, setShowSidebar] = useState(user ? true : false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timeOut = setInterval(() => {
-      const loggedUserJSON = window.localStorage.getItem("user");
-      if (
-        loggedUserJSON &&
-        Object.keys(JSON.parse(loggedUserJSON)).length > 0
-      ) {
-        const user = JSON.parse(loggedUserJSON);
-        setUser(user);
-        setShowSidebar(true);
-        navigate("/animales");
-        clearInterval(timeOut);
-      } else {
-        setShowSidebar(false);
-      }
-    }, 100);
+  // useEffect(() => {
+  //   const timeOut = setInterval(() => {
+  //     const loggedUserJSON = window.localStorage.getItem("user");
+  //     if (
+  //       loggedUserJSON &&
+  //       Object.keys(JSON.parse(loggedUserJSON)).length > 0
+  //     ) {
+  //       const user = JSON.parse(loggedUserJSON);
+  //       setUser(user);
+  //       setShowSidebar(true);
+  //       navigate("/animales");
+  //       clearInterval(timeOut);
+  //     } else {
+  //       setShowSidebar(false);
+  //     }
+  //   }, 100);
 
-    return () => {
-      clearInterval(timeOut);
-    };
-  }, [user]);
+  //   return () => {
+  //     clearInterval(timeOut);
+  //   };
+  // }, []);
 
   return (
     <main className="App w-screen">
@@ -48,7 +49,7 @@ function App() {
         <div className="flex items-start">
           {showSidebar && (
             <div className="w-1/6">
-              <Sidebar show={showSidebar}>
+              <Sidebar show={showSidebar} setShowSidebar={setShowSidebar}>
                 <SidebarItem
                   icon={<LayoutDashboard />}
                   text={"Animales"}
@@ -70,7 +71,10 @@ function App() {
               <Route
                 path="/login"
                 Component={() => (
-                  <Login setShowSidebar={setShowSidebar} setUser={setUser} />
+                  <LoginForm
+                    setShowSidebar={setShowSidebar}
+                    setUser={setUser}
+                  />
                 )}
               />
               <Route
@@ -78,12 +82,12 @@ function App() {
                 Component={() => <Register setShowSidebar={setShowSidebar} />}
               />
               <Route
-                path="/*"
+                path="/"
                 Component={() => (
-                  <Login
+                  <LoginForm
                     setShowSidebar={setShowSidebar}
                     setUser={setUser}
-                  ></Login>
+                  ></LoginForm>
                 )}
               />
             </Routes>

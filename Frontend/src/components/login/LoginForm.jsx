@@ -1,16 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../utils/AuthContext";
-
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Registerbuttom from "../register/RegisterButtom";
 import { BASE_URL } from "../../utils/constant";
 import "./login.css";
-import { useLocalStorage } from "react-use";
 import ToastHelper from "../../utils/toast.helper";
 
-export default function LoginForm({ setShowSidebar = () => {} }) {
-  const [user, setUser] = useLocalStorage("user");
+export default function LoginForm({ setShowSidebar = () => {}, setUser }) {
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
@@ -26,21 +23,22 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
 
     try {
       const response = await axios.post(`${BASE_URL}/Usuario/login`, formData);
-      console.log(response);
       const token = response.data.message;
       const userId = response.data.userId;
       const fullName = response.data.fullName;
       login(token);
-      const user = {
+      const userData = {
         userId: userId,
         token: token,
         userName: emailOrUsername,
         fullName: fullName,
       };
 
-      window.localStorage.setItem("user", JSON.stringify(user));
+      setUser(userData);
+      setShowSidebar(true);
+      navigate("/animales");
     } catch (error) {
-      ToastHelper.errorToast(error.response.data);
+      ToastHelper.errorToast(error.response?.data);
       console.error(error);
     }
   };
@@ -52,6 +50,8 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
       login(user.token);
       setShowSidebar(true);
       navigate("/animales");
+    } else {
+      setShowSidebar(false);
     }
   }, []);
 

@@ -6,7 +6,7 @@ import { useLocalStorage } from "react-use";
 export const SidebarContext = createContext();
 
 // eslint-disable-next-line react/prop-types
-export default function Sidebar({ children }) {
+export default function Sidebar({ show, setShowSidebar, children }) {
   const [user, setUser] = useLocalStorage("user");
   const [mostrarMenu, setMostrarMenu] = useState(false);
   const navigate = useNavigate();
@@ -16,62 +16,65 @@ export default function Sidebar({ children }) {
   };
 
   const handleCerrarSesionClick = () => {
+    setShowSidebar(false);
     setUser({});
     navigate("/");
   };
 
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-gray-800 border-r-2 shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center border-b-2 ">
-          <Link to={"/animales"}>
-            <img
-              src="logo.png"
-              className={`overflow-hidden transition-all h-36 w-screen`}
-              alt=""
-            />
-          </Link>
-        </div>
+      {show && (
+        <nav className="h-full flex flex-col bg-gray-800 border-r-2 shadow-sm">
+          <div className="p-4 pb-2 flex justify-between items-center border-b-2 ">
+            <Link to={"/animales"}>
+              <img
+                src="logo.png"
+                className={`overflow-hidden transition-all h-36 w-screen`}
+                alt=""
+              />
+            </Link>
+          </div>
 
-        <SidebarContext.Provider value={useState(true)}>
-          <ul className="flex-1 px-3">{children}</ul>
-        </SidebarContext.Provider>
+          <SidebarContext.Provider value={useState(true)}>
+            <ul className="flex-1 px-3">{children}</ul>
+          </SidebarContext.Provider>
 
-        <div className="border-t-2 flex p-3">
-          <div
-            className={`
+          <div className="border-t-2 flex p-3">
+            <div
+              className={`
               flex justify-between items-center
               overflow-hidden transition-all w-52 ml-3
           `}
-          >
-            <div className="leading-4">
-              <h4 className="font-semibold">{user?.fullName}</h4>
-            </div>
-            <div className="">
-              <MoreVertical
-                size={20}
-                className="hover:cursor-pointer hover:bg-slate-500 rounded-lg"
-                onClick={handleMoreVerticalClick}
-              />
-              {mostrarMenu && (
-                <div className="absolute bottom-10 ">
-                  <div
-                    className="flex items-center gap-2 p-2 cursor-pointer rounded-lg bg-gray-600 hover:bg-gray-500"
-                    onClick={handleCerrarSesionClick}
-                  >
-                    <LogOut
-                      size={20}
-                      className="hover:cursor-pointer text-red-800"
-                      onClick={handleMoreVerticalClick}
-                    />
-                    <span className="font-bold">Cerrar sesión</span>
+            >
+              <div className="leading-4">
+                <h4 className="font-semibold">{user?.fullName}</h4>
+              </div>
+              <div className="">
+                <MoreVertical
+                  size={20}
+                  className="hover:cursor-pointer hover:bg-slate-500 rounded-lg"
+                  onClick={handleMoreVerticalClick}
+                />
+                {mostrarMenu && (
+                  <div className="absolute bottom-10 ">
+                    <div
+                      className="flex items-center gap-2 p-2 cursor-pointer rounded-lg bg-gray-600 hover:bg-gray-500"
+                      onClick={handleCerrarSesionClick}
+                    >
+                      <LogOut
+                        size={20}
+                        className="hover:cursor-pointer text-red-800"
+                        onClick={handleMoreVerticalClick}
+                      />
+                      <span className="font-bold">Cerrar sesión</span>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      )}
     </aside>
   );
 }
