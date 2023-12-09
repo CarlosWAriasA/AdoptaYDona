@@ -64,12 +64,13 @@ namespace IdentityLayer.Core.Services
             }
 
             var token = GenerateNewJsonWebToken(authClaims);
-
+     
             return new AuthServiceResponseDto()
             {
                 IsSucceed = true,
                 Message = token,
                 userId = user.Id,
+                FullName = user.FirstName + " " + user.LastName,
             };
         }
 

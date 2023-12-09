@@ -47,7 +47,7 @@ namespace Api.Controllers
             if (registerResult.IsSucceed)
                 return Ok(registerResult);
 
-            return BadRequest(registerResult);
+            return BadRequest(registerResult.Message);
         }
 
 
@@ -61,7 +61,7 @@ namespace Api.Controllers
             if (loginResult.IsSucceed)
                 return Ok(loginResult);
 
-            return Unauthorized(loginResult);
+            return Unauthorized(loginResult.Message);
         }
 
 

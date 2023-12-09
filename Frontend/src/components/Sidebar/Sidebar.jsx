@@ -1,16 +1,30 @@
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, LogOut } from "lucide-react";
 import { createContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocalStorage } from "react-use";
 
 export const SidebarContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export default function Sidebar({ children }) {
+  const [user, setUser] = useLocalStorage("user");
+  const [mostrarMenu, setMostrarMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMoreVerticalClick = () => {
+    setMostrarMenu((prev) => !prev);
+  };
+
+  const handleCerrarSesionClick = () => {
+    setUser({});
+    navigate("/");
+  };
+
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-gray-800 border-r-2 shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center border-b-2 ">
-          <Link to={"/"}>
+          <Link to={"/animales"}>
             <img
               src="logo.png"
               className={`overflow-hidden transition-all h-36 w-screen`}
@@ -24,11 +38,6 @@ export default function Sidebar({ children }) {
         </SidebarContext.Provider>
 
         <div className="border-t-2 flex p-3">
-          <img
-            src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
-            alt=""
-            className="w-10 h-10 rounded-md"
-          />
           <div
             className={`
               flex justify-between items-center
@@ -36,9 +45,30 @@ export default function Sidebar({ children }) {
           `}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">Carlos Arias</h4>
+              <h4 className="font-semibold">{user?.fullName}</h4>
             </div>
-            <MoreVertical size={20} className="hover:cursor-pointer" />
+            <div className="">
+              <MoreVertical
+                size={20}
+                className="hover:cursor-pointer hover:bg-slate-500 rounded-lg"
+                onClick={handleMoreVerticalClick}
+              />
+              {mostrarMenu && (
+                <div className="absolute bottom-10 ">
+                  <div
+                    className="flex items-center gap-2 p-2 cursor-pointer rounded-lg bg-gray-600 hover:bg-gray-500"
+                    onClick={handleCerrarSesionClick}
+                  >
+                    <LogOut
+                      size={20}
+                      className="hover:cursor-pointer text-red-800"
+                      onClick={handleMoreVerticalClick}
+                    />
+                    <span className="font-bold">Cerrar sesión</span>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>

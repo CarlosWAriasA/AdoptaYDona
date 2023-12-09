@@ -26,26 +26,28 @@ export default function LoginForm({ setShowSidebar = () => {} }) {
 
     try {
       const response = await axios.post(`${BASE_URL}/Usuario/login`, formData);
-
+      console.log(response);
       const token = response.data.message;
       const userId = response.data.userId;
+      const fullName = response.data.fullName;
       login(token);
       const user = {
         userId: userId,
         token: token,
         userName: emailOrUsername,
+        fullName: fullName,
       };
 
       window.localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
-      ToastHelper.errorToast(error.message);
+      ToastHelper.errorToast(error.response.data);
       console.error(error);
     }
   };
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("user");
-    if (loggedUserJSON) {
+    if (loggedUserJSON && Object.keys(JSON.parse(loggedUserJSON)).length > 0) {
       const user = JSON.parse(loggedUserJSON);
       login(user.token);
       setShowSidebar(true);

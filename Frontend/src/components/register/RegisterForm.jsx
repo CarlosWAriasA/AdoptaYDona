@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../utils/constant";
+import ToastHelper from "../../utils/toast.helper";
 
 // eslint-disable-next-line react/prop-types
 const RegistrationForm = ({ setShowSidebar }) => {
@@ -41,17 +42,19 @@ const RegistrationForm = ({ setShowSidebar }) => {
     try {
       await axios.post(`${BASE_URL}/Usuario/register`, jsonData, config);
       setShowSidebar(true);
+      setUserName("");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      setDni("");
+      setGender("");
+      ToastHelper.successToast("Usuario Creado Correctamente");
       navigate("/login");
     } catch (error) {
       console.error(error);
+      ToastHelper.errorToast(error.response.data);
     }
-    setUserName("");
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-    setDni("");
-    setGender("");
   };
 
   return (

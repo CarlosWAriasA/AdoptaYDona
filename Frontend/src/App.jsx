@@ -1,14 +1,14 @@
 import "./App.css";
 import Sidebar, { SidebarItem } from "./components/Sidebar/Sidebar";
 import { LayoutDashboard } from "lucide-react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AnimalesList from "./pages/Animales/AnimalesList";
 import AnimalesEdit from "./pages/Animales/AnimalesEdit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/login/login";
 import Register from "./pages/Register/Register";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Profile from "./pages/login/profile";
 import { AuthProvider } from "./utils/AuthContext";
 import { useLocalStorage } from "react-use";
@@ -23,19 +23,24 @@ function App() {
   useEffect(() => {
     const timeOut = setInterval(() => {
       const loggedUserJSON = window.localStorage.getItem("user");
-      if (loggedUserJSON) {
+      if (
+        loggedUserJSON &&
+        Object.keys(JSON.parse(loggedUserJSON)).length > 0
+      ) {
         const user = JSON.parse(loggedUserJSON);
         setUser(user);
         setShowSidebar(true);
         navigate("/animales");
         clearInterval(timeOut);
+      } else {
+        setShowSidebar(false);
       }
     }, 100);
 
     return () => {
       clearInterval(timeOut);
     };
-  }, []);
+  }, [user]);
 
   return (
     <main className="App w-screen">
@@ -55,6 +60,13 @@ function App() {
 
           <div className="w-5/6" style={{ overflow: "hidden" }}>
             <Routes>
+              <Route element={<ProtectedRoute user={user} />}>
+                <Route path="/animales" Component={AnimalesList} />
+              </Route>
+              <Route element={<ProtectedRoute user={user} />}>
+                <Route path="/animales-edit" Component={AnimalesEdit} />
+              </Route>
+              <Route path="profile" Component={Profile}></Route>
               <Route
                 path="/login"
                 Component={() => (
@@ -65,16 +77,15 @@ function App() {
                 path="/register"
                 Component={() => <Register setShowSidebar={setShowSidebar} />}
               />
-              <>
-                <Route element={<ProtectedRoute user={user} />}>
-                  <Route path="/animales" Component={AnimalesList} />
-                </Route>
-                <Route element={<ProtectedRoute user={user} />}>
-                  <Route path="/animales-edit" Component={AnimalesEdit} />
-                </Route>
-                <Route path="profile" Component={Profile}></Route>
-              </>
-              <Route path="/" Component={() => <Login></Login>} />
+              <Route
+                path="/*"
+                Component={() => (
+                  <Login
+                    setShowSidebar={setShowSidebar}
+                    setUser={setUser}
+                  ></Login>
+                )}
+              />
             </Routes>
           </div>
         </div>
