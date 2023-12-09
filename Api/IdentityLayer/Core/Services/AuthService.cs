@@ -33,7 +33,7 @@ namespace IdentityLayer.Core.Services
                 return new AuthServiceResponseDto()
                 {
                     IsSucceed = false,
-                    Message = "Invalid Credentials"
+                    Message = "Usuario o Contraseña invalida"
                 };
 
             var isPasswordCorrect = await _userManager.CheckPasswordAsync(user, loginDto.Password);
@@ -42,7 +42,7 @@ namespace IdentityLayer.Core.Services
                 return new AuthServiceResponseDto()
                 {
                     IsSucceed = false,
-                    Message = "Invalid Credentials"
+                    Message = "Usuario o Contraseña invalida"
                 };
 
             var userRoles = await _userManager.GetRolesAsync(user);
@@ -122,7 +122,7 @@ namespace IdentityLayer.Core.Services
                 return new AuthServiceResponseDto()
                 {
                     IsSucceed = false,
-                    Message = "UserName Already Exists"
+                    Message = "Ya existe un usuario con este nombre"
                 };
 
 
@@ -141,7 +141,7 @@ namespace IdentityLayer.Core.Services
 
             if (!createUserResult.Succeeded)
             {
-                var errorString = "User Creation Failed Beacause: ";
+                var errorString = "Fallo la creacion del usuario: ";
                 foreach (var error in createUserResult.Errors)
                 {
                     errorString += " # " + error.Description;
@@ -159,7 +159,7 @@ namespace IdentityLayer.Core.Services
             return new AuthServiceResponseDto()
             {
                 IsSucceed = true,
-                Message = "User Created Successfully"
+                Message = "User Creado exitosamente"
             };
         }
 

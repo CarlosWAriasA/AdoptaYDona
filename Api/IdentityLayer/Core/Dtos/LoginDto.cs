@@ -4,10 +4,10 @@ namespace IdentityLayer.Core.Dtos
 {
     public class LoginDto
     {
-        [Required(ErrorMessage = "UserName is required")]
+        [Required(ErrorMessage = "Usuario es requerido")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Contraseña es requerida")]
         public string Password { get; set; }
     }
 }

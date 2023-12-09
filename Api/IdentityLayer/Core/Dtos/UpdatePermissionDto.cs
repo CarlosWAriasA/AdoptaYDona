@@ -4,7 +4,7 @@ namespace IdentityLayer.Core.Dtos
 {
     public class UpdatePermissionDto
     {
-        [Required(ErrorMessage = "UserName is required")]
+        [Required(ErrorMessage = "Usuario es requerido")]
         public string UserName { get; set; }
 
     }
