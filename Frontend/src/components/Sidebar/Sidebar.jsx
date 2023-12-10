@@ -1,5 +1,5 @@
 import { MoreVertical, LogOut } from "lucide-react";
-import { createContext, useState } from "react";
+import { createContext, useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 
@@ -7,6 +7,7 @@ export const SidebarContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export default function Sidebar({ show, setShowSidebar, children }) {
+  const menuRef = useRef(null);
   const [user, setUser] = useLocalStorage("user");
   const [mostrarMenu, setMostrarMenu] = useState(false);
   const navigate = useNavigate();
@@ -20,6 +21,20 @@ export default function Sidebar({ show, setShowSidebar, children }) {
     setUser({});
     navigate("/");
   };
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setMostrarMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <aside className="h-screen">
@@ -35,7 +50,7 @@ export default function Sidebar({ show, setShowSidebar, children }) {
             </Link>
           </div>
 
-          <SidebarContext.Provider value={useState(true)}>
+          <SidebarContext.Provider value={true}>
             <ul className="flex-1 px-3">{children}</ul>
           </SidebarContext.Provider>
 
@@ -49,7 +64,7 @@ export default function Sidebar({ show, setShowSidebar, children }) {
               <div className="leading-4">
                 <h4 className="font-semibold">{user?.fullName}</h4>
               </div>
-              <div className="">
+              <div ref={menuRef}>
                 <MoreVertical
                   size={20}
                   className="hover:cursor-pointer hover:bg-slate-500 rounded-lg"
@@ -112,7 +127,7 @@ export function SidebarItem({ icon, text, active, alert, link }) {
           absolute left-full rounded-md px-2 py-1
           bg-indigo-100 text-indigo-800 text-sm
           invisible opacity-20 -translate-x-3 transition-all
-          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
+          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 z-40
       `}
         >
           {text}

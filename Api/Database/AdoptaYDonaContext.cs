@@ -15,6 +15,7 @@ namespace Database
         public DbSet<AnimalSolicitud> AnimalesSolicitudes { get; set; }
         public DbSet<AnimalImagen> AnimalesImagenes { get; set; }
         public DbSet<Mensaje> Mensajes { get; set; }
+        public DbSet<Publicacion> Publicaciones { get; set; }
 
     }
 }

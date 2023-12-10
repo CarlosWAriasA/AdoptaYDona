@@ -94,7 +94,7 @@ export default function LoginForm({ setShowSidebar = () => {}, setUser }) {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className=" w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           >
             Iniciar sesión
           </button>

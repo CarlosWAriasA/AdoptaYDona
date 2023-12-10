@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../utils/constant";
-import defaultImage from "../../assets/default.jpg"; // Ruta de la imagen por defecto
+import defaultImage from "../../assets/default.jpg";
 import ToastHelper from "../../utils/toast.helper";
 import AnimalSkeleton from "../Skeletons/AnimalSkeleton";
 import { useLocalStorage } from "react-use";
@@ -10,7 +10,7 @@ const AnimalList = ({ where, fetchData }) => {
   const [hasAnimals, setHasAnimals] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useLocalStorage("user");
-// test
+  // test
   const searchData = async (where) => {
     setIsLoading(true);
     try {
@@ -34,7 +34,9 @@ const AnimalList = ({ where, fetchData }) => {
       console.error("Error al obtener la lista de animales", error);
       ToastHelper.errorToast(error.message);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     }
   };
 

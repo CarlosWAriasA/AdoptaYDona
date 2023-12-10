@@ -1,20 +1,20 @@
 import "./App.css";
 import Sidebar, { SidebarItem } from "./components/Sidebar/Sidebar";
-import { LayoutDashboard } from "lucide-react";
-import { Route, Routes } from "react-router-dom";
+import { PawPrint, BookCopy } from "lucide-react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AnimalesList from "./pages/Animales/AnimalesList";
 import AnimalesEdit from "./pages/Animales/AnimalesEdit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Login from "./pages/login/login";
 import Register from "./pages/Register/Register";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Profile from "./pages/login/profile";
 import { AuthProvider } from "./utils/AuthContext";
 import { useLocalStorage } from "react-use";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { useNavigate } from "react-router-dom";
 import LoginForm from "./components/login/LoginForm";
+import PublicacionesList from "./pages/Publicaciones/PublicacionesList";
+import PublicacionesEdit from "./pages/Publicaciones/PublicacionesEdit";
 
 function App() {
   const [user, setUser] = useLocalStorage("user");
@@ -28,9 +28,14 @@ function App() {
             <div className="w-1/6">
               <Sidebar show={showSidebar} setShowSidebar={setShowSidebar}>
                 <SidebarItem
-                  icon={<LayoutDashboard />}
+                  icon={<PawPrint />}
                   text={"Animales"}
                   link={"/animales"}
+                />
+                <SidebarItem
+                  icon={<BookCopy />}
+                  text={"Publicaciones"}
+                  link={"/publicaciones"}
                 />
               </Sidebar>
             </div>
@@ -59,6 +64,14 @@ function App() {
                 Component={() => <Register setShowSidebar={setShowSidebar} />}
               />
               <Route
+                path="/publicaciones"
+                Component={() => <PublicacionesList />}
+              />
+              <Route
+                path="/publicaciones-edit"
+                Component={() => <PublicacionesEdit />}
+              />
+              <Route
                 path="/"
                 Component={() => (
                   <LoginForm
@@ -67,6 +80,7 @@ function App() {
                   ></LoginForm>
                 )}
               />
+              <Route path="*" element={<Navigate to="/animales" />} />
             </Routes>
           </div>
         </div>

@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-function ImageUploader({ onImageChange }) {
+function ImageUploader({
+  label = "Imagenes (Máximo 10)",
+  multi = true,
+  onImageChange,
+  styles = { width: "50%" },
+}) {
   const [images, setImages] = useState([]);
 
   const handleImageChange = (e) => {
@@ -9,6 +14,11 @@ function ImageUploader({ onImageChange }) {
 
     if (fileList.length > 0) {
       const selectedImages = Array.from(fileList);
+
+      if (selectedImages.length + images.length > 10) {
+        const remainingSlots = 10 - images.length;
+        selectedImages.splice(remainingSlots);
+      }
 
       Promise.all(
         selectedImages.map((image) => {
@@ -50,19 +60,23 @@ function ImageUploader({ onImageChange }) {
   return (
     <div className="mb-4">
       <label htmlFor="image" className="block text-sm font-medium ">
-        Imagenes
+        {label}
       </label>
       <input
+        style={styles}
         type="file"
         id="image"
         name="image"
         accept="image/*"
         onChange={handleImageChange}
-        className="mt-1 p-2 w-1/2 border rounded-md"
-        multiple
+        className="mt-1 p-2 border rounded-md"
+        multiple={multi}
       />
       {images.length > 0 && (
-        <div className="mt-2 flex gap-2">
+        <div
+          className="mt-2 flex gap-2 flex-wrap"
+          style={{ maxWidth: "1400px" }}
+        >
           {images.map((image, index) => (
             <img
               key={index}
