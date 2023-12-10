@@ -121,6 +121,21 @@ export default function PublicacionesList() {
                     {animal.comentario}
                   </p>
                 </div>
+                <p
+                  className="rounded-lg"
+                  style={{
+                    position: "absolute",
+                    top: "5px",
+                    right: "5px",
+                    color: "#fff",
+                    background: "#2d3748",
+                    padding: "3px",
+                    borderRadius: "2px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {animal.usuarioNombre}
+                </p>
               </div>
             ))}
           </div>

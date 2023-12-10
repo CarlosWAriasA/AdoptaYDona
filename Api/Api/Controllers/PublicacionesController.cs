@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Database;
 using Database.Model;
 using Api.DTOs;
+using IdentityLayer.Core.Interfaces;
+using IdentityLayer.Core.Services;
 
 namespace Api.Controllers
 {
@@ -16,10 +18,12 @@ namespace Api.Controllers
     public class PublicacionesController : ControllerBase
     {
         private readonly AdoptaYDonaContext _context;
+        private readonly IAuthService _authService;
 
-        public PublicacionesController(AdoptaYDonaContext context)
+        public PublicacionesController(AdoptaYDonaContext context, IAuthService authService)
         {
             _context = context;
+            _authService = authService;
         }
 
         // GET: api/Publicaciones
@@ -36,11 +40,14 @@ namespace Api.Controllers
                 List<PublicacionDTO> publicacionDTOs = new List<PublicacionDTO>();
                 foreach (var publicacion in publicaciones)
                 {
+                    var user = await _authService.GetUserById(publicacion.UsuarioEmisorId);
+
                     PublicacionDTO publicacionDTO = new PublicacionDTO()
                     {
                         Id = publicacion.Id,
                         UsuarioId = publicacion.UsuarioEmisorId,
-                        Comentario = publicacion.Comentario
+                        Comentario = publicacion.Comentario,
+                        UsuarioNombre = user?.FirstName + " " + user?.LastName, 
                     };
 
                     try

@@ -24,6 +24,16 @@ namespace IdentityLayer.Core.Services
             _configuration = configuration;
         }
 
+        public async Task<ApplicationUser> GetUserById(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
+        }
+
 
         public async Task<AuthServiceResponseDto> LoginAsync(LoginDto loginDto)
         {
