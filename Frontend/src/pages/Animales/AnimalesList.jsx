@@ -21,7 +21,12 @@ export default function AnimalesList() {
   };
 
   const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+    if (
+      sidebarRef.current &&
+      event.target.nodeName.toLowerCase() !== "polygon" &&
+      !sidebarRef.current.contains(event.target) &&
+      !event.target.classList.contains("filter")
+    ) {
       setShowSidebar(false);
     }
   };
@@ -35,9 +40,9 @@ export default function AnimalesList() {
   }, []);
 
   return (
-    <main ref={sidebarRef}>
+    <main>
       {showSidebar && (
-        <div>
+        <div ref={sidebarRef}>
           <Sidebar
             aria-label="Sidebar with content separator example"
             className="absolute right-0 bottom-0 bg-gray-600 hover:cursor-pointer w-1/4 rounded-sm z-30"
@@ -162,7 +167,7 @@ export default function AnimalesList() {
             animation="duration-1000"
           >
             <Filter
-              className="mt-2 me-5 w-7 h-7 text-blue-400 hover:cursor-pointer"
+              className="filter mt-2 me-5 w-7 h-7 text-blue-400 hover:cursor-pointer"
               onClick={handleShowSidebar}
             />
           </Tooltip>
