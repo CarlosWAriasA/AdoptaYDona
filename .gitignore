@@ -1,0 +1,54 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+# Visual Studio Code
+.vscode/
+
+bin/
+obj/
+
+.vs/
+
+# Ignorar archivos de configuración con información sensible
+appsettings.json
+
+secrets.json
+
+# Archivos generados por Visual Studio
+*.suo
+*.user
+*.sln.docstates
+
+# Directorios de compilación y ejecución
+Api/Api/bin/
+Api/Api/obj/
+
+# Archivos específicos del usuario
+Api/Api/Api.csproj.user
+
+# Directorios de paquetes NuGet
+**/packages/
+
+# Archivos de configuración y bloqueo de NuGet
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# Archivos temporales y de respaldo
+*.bak
+*.tmp
+*.log
+*.swp
+/Api/Api/appsettings.json
+/Api/Api/appsettings.Development.json
+Api/.vs/Api/config/applicationhost.config
+Api/.vs/Api/config/applicationhost.config
+Api/.vs/Api/config/applicationhost.config
+Api/.vs/ProjectEvaluation/api.projects.v5.2
+Api/.vs/ProjectEvaluation/api.metadata.v5.2
+Api/.vs/ProjectEvaluation/api.metadata.v5.2
+Api/.vs/Api/v17/.suo
+Api/.vs/Api/v17/.futdcache.v2
+Api/.vs/Api/config/applicationhost.config
