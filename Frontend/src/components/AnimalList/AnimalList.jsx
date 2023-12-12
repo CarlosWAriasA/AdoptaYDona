@@ -51,6 +51,9 @@ const AnimalList = ({ where, fetchData }) => {
 	}, [fetchData])
 
 	return (
+
+
+
 		<div style={{ maxHeight: "calc(90vh - 0px)", overflowY: "auto" }}>
 			{isLoading ? (
 				<div
@@ -89,6 +92,7 @@ const AnimalList = ({ where, fetchData }) => {
 								border: "2px solid #fff",
 							}}
 						>
+							<Link to={`/animales-detail/${animal.id}`}>
 							<img
 								src={
 									animal.imagenes?.length > 0
@@ -103,7 +107,8 @@ const AnimalList = ({ where, fetchData }) => {
 									borderTopLeftRadius: "8px",
 									borderTopRightRadius: "8px",
 								}}
-							/>
+								/>
+								</Link>
 							<div style={{ padding: "10px 10px 5px 10px" }}>
 								<p style={{ fontWeight: "bold", marginBottom: "5px" }}>
 									{animal.nombre}
@@ -124,23 +129,7 @@ const AnimalList = ({ where, fetchData }) => {
 							>
 								{animal.tipo}
 							</p>
-							<Link to={`/animales-detail/${animal.id}`}>
-								<button
-									className='rounded-lg'
-									style={{
-										position: "absolute",
-										bottom: "5px",
-										right: "5px",
-										color: "#fff",
-										background: "#2d3748",
-										padding: "3px",
-										borderRadius: "2px",
-										fontWeight: "bold",
-									}}
-								>
-									Ver Detalle
-								</button>
-							</Link>
+							
 						</div>
 					))}
 				</div>
@@ -150,6 +139,9 @@ const AnimalList = ({ where, fetchData }) => {
 				</p>
 			)}
 		</div>
+
+
+
 	)
 }
 
