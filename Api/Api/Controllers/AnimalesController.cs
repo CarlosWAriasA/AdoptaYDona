@@ -91,21 +91,67 @@ namespace Api.Controllers
 
         // GET: api/Animales/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Animal>> GetAnimal(int id)
+        public async Task<ActionResult<AnimalDTO>> GetAnimal(int id)
         {
-          if (_context.Animales == null)
-          {
-              return NotFound();
-          }
-            var animal = await _context.Animales.FindAsync(id);
-
-            if (animal == null)
+            try
             {
-                return NotFound();
+                var animal = await _context.Animales.FindAsync(id);
+
+                if (animal == null)
+                {
+                    return NotFound();
+                }
+
+                var animalDTO = new AnimalDTO()
+                {
+                    Id = animal.Id,
+                    Genero = animal.Genero,
+                    Edad = animal.Edad,
+                    Estatus = animal.Estatus,
+                    FechaCreacion = animal.FechaCreacion,
+                    Nombre = animal.Nombre,
+                    Tipo = animal.Tipo,
+                    UsuarioId = animal.UsuarioId
+                };
+
+                var imagenes = _context.AnimalesImagenes.Where(a => a.AnimalId == animal.Id);
+                if (imagenes.Any())
+                {
+                    animalDTO.Imagenes = new List<AnimalImagenDTO>();
+                    foreach (var imagen in imagenes)
+                    {
+                        try
+                        {
+                            byte[] bytesImagen = System.IO.File.ReadAllBytes(imagen.RutaImagen);
+                            if (bytesImagen.Length > 0)
+                            {
+                                string base64String = Convert.ToBase64String(bytesImagen);
+                                animalDTO.Imagenes.Add(new AnimalImagenDTO
+                                {
+                                    Content = base64String
+                                });
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            
+                        }
+                    }
+                }
+
+                return animalDTO;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
-            return animal;
+
+
+
         }
+
+
 
         // PUT: api/Animales/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

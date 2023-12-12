@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace Database
 {
-    public class AdoptaYDonaContextFactory : IDesignTimeDbContextFactory<AdoptaYDonaContext>
-    {
+    //public class AdoptaYDonaContextFactory : IDesignTimeDbContextFactory<AdoptaYDonaContext>
+    //{
+    //    public AdoptaYDonaContext CreateDbContext(string[] args)
+    //    {
 
-        public AdoptaYDonaContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<AdoptaYDonaContext>();
+    //        var optionsBuilder = new DbContextOptionsBuilder<AdoptaYDonaContext>();
+    //        var connectionString = "ConnectionStrings"; 
+    //        optionsBuilder.UseSqlServer(connectionString);
 
-            return new AdoptaYDonaContext(optionsBuilder.Options);
-        }
-    }
+    //        return new AdoptaYDonaContext(optionsBuilder.Options);
+    //    }
+
+
+    //}
+
 }
+

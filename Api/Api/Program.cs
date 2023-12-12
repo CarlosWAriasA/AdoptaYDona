@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AdoptaYDonaContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AdoptaYDonaConnection")));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", app =>

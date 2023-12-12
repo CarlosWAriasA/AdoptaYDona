@@ -47,6 +47,22 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Publicaciones",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RutaImagen = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UsuarioEmisorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publicaciones", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -127,6 +143,9 @@ namespace Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "Mensajes");
+
+            migrationBuilder.DropTable(
+                name: "Publicaciones");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
