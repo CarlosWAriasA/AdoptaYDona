@@ -118,7 +118,9 @@ export default function PublicacionesList() {
                 />
                 <div style={{ padding: "10px 10px 5px 10px" }}>
                   <p style={{ fontWeight: "bold", marginBottom: "5px" }}>
-                    {animal.comentario}
+                    {animal.comentario.length > 25
+                      ? `${animal.comentario.substring(0, 26)}...`
+                      : animal.comentario}
                   </p>
                 </div>
                 <p
