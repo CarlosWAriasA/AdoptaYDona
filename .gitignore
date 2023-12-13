@@ -53,3 +53,5 @@ Api/.vs/Api/v17/.suo
 Api/.vs/Api/v17/.futdcache.v2
 Api/.vs/Api/config/applicationhost.config
 /Api/Database/Migrations/20231210012735_v2.cs
+*.png
+*.jpg

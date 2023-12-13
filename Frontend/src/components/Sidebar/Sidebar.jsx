@@ -44,8 +44,8 @@ export default function Sidebar({ show, setShowSidebar, children }) {
             <Link to={"/animales"}>
               <img
                 src="logo.png"
-                className={`overflow-hidden transition-all h-36 w-screen`}
-                alt=""
+                className={`overflow-hidden transition-all h-36`}
+                alt="logo"
               />
             </Link>
           </div>
