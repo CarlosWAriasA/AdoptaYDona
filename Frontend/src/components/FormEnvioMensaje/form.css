@@ -1,23 +1,20 @@
  /* Agrega estas reglas a tu archivo CSS existente */
 
  .phone-container {
-    background-image: url('itla2.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: fixed;
-    bottom: 31px;
-    left: 56%;
-    transform: translateX(-55%);
-    border: 12px solid #213547;
-    border-radius: 15px;
-    overflow: hidden;
-    max-width: 400px;
-    height: 870px;
-    margin: 5px;
-    width: 3000px;
-    border-radius: 53px;
-  }
+  background: #003d6f; /* Azul */
+  position: fixed;
+  bottom: 20px;
+  left: 56%;
+  transform: translateX(-55%);
+  border: 12px solid #000000;
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 400px;
+  height: 750px;
+  margin: 5px;
+  width: 3000px;
+  border-radius: 53px;
+}
   
   .phone-header {
     background-color: #213547;
@@ -53,15 +50,20 @@
   }
   
   .message-container {
-    background-color: #6f00ff; /* Naranja */
+    background: #fff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    font-weight: bold; /* Fuente negrita */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border: 1px solid #ccc; /* Borde */
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 15px; /* Ajusta el valor según tu preferencia */
     display: flex;
-    align-items: flex-start; 
-    border-top-left-radius:  100%;
-    border-bottom-left-radius: 100%;
-   }
+    align-items: flex-start;
+  }
+  
+  
+  
   
   .message-input {
     display: flex;
@@ -109,4 +111,6 @@
     font-weight: bold; /* Puedes ajustar el estilo del nombre de usuario según tu preferencia */
   }
   
-   
+  .message-container:hover {
+    background: #eee; /* Cambio de color al pasar el ratón */
+  }

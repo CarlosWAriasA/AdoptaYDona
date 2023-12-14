@@ -60,7 +60,7 @@ const FormularioEnvioMensaje = () => {
   return (
     <div className="phone-container">
       <div className="phone-header">
-        <h2>Comunidad Adopta y Dona 🍎</h2>
+        <h2>Comunidad Adopta y Dona 🐶</h2>
       </div>
       <div className="message-list" ref={messageListRef}>
         <ul>
