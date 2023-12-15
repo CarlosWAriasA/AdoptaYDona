@@ -2,6 +2,7 @@ import "./App.css";
 import Sidebar, { SidebarItem } from "./components/Sidebar/Sidebar";
 import { PawPrint, BookCopy } from "lucide-react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { MessagesSquare } from "lucide-react"
 import AnimalesList from "./pages/Animales/AnimalesList";
 import AnimalesEdit from "./pages/Animales/AnimalesEdit";
 import { ToastContainer } from "react-toastify";
@@ -18,6 +19,8 @@ import PublicacionesEdit from "./pages/Publicaciones/PublicacionesEdit";
 import AnimalesDetails from "./pages/Animales/AnimalesDetails";
 import { PlusCircle } from "lucide-react";
 import Donacion from "./components/SolicitudDonacion/SolicitudDonacion";
+import ChatPage from "./pages/Chat/ChatPage";
+
 
 function App() {
   const [user, setUser] = useLocalStorage("user");
@@ -45,6 +48,11 @@ function App() {
 									text={"Solicitud de Donación"}
 									link={"/solicitud-donacion"}
 								/>
+								<SidebarItem
+									icon={<MessagesSquare />} 
+									text={"Mensajería"}
+									link={"/mensajeria"}
+								/>
 							</Sidebar>
 						</div>
 					)}
@@ -57,6 +65,7 @@ function App() {
 							<Route element={<ProtectedRoute user={user} />}>
 								<Route path='/animales-edit' Component={AnimalesEdit} />
 							</Route>
+
 							<Route element={<ProtectedRoute user={user} />}>
 								<Route
 									path='/animales-detail/:id'
@@ -65,9 +74,18 @@ function App() {
 							</Route>
 
 							<Route element={<ProtectedRoute user={user} />}>
+								<Route
+									path='/mensajeria'
+									Component={ChatPage}
+								/>
+							</Route> 
+
+						
+
+							<Route element={<ProtectedRoute user={user} />}>
 								<Route path='/solicitud-donacion' Component={Donacion} />
 							</Route>
-						
+
 							<Route path='profile' Component={Profile}></Route>
 							<Route
 								path='/login'

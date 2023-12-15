@@ -1,0 +1,116 @@
+ /* Agrega estas reglas a tu archivo CSS existente */
+
+ .phone-container {
+  background: #003d6f; /* Azul */
+  position: fixed;
+  bottom: 20px;
+  left: 56%;
+  transform: translateX(-55%);
+  border: 12px solid #000000;
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 400px;
+  height: 750px;
+  margin: 5px;
+  width: 3000px;
+  border-radius: 53px;
+}
+  
+  .phone-header {
+    background-color: #213547;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 19px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Estilo para el riel de la barra de desplazamiento */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+  .message-list {
+    max-height: 724px;
+    overflow-y: auto;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+  
+  .message-container {
+    background: #fff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    font-weight: bold; /* Fuente negrita */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border: 1px solid #ccc; /* Borde */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px; /* Ajusta el valor según tu preferencia */
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  
+  
+  
+  .message-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f7f7f7;
+    z-index: 1;
+  }
+  
+  .input-message {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .send-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 53px;
+    cursor: pointer;
+  }
+  
+   /* Agrega estos estilos en tu archivo CSS o en línea según tu configuración */
+  
+   
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px; /* Ajusta el margen entre el icono y el nombre de usuario */
+  }
+  
+  .user-circle {
+    font-size: 24px; /* Tamaño del icono del usuario */
+    
+  }
+  
+  .username {
+    font-weight: bold; /* Puedes ajustar el estilo del nombre de usuario según tu preferencia */
+  }
+  
+  .message-container:hover {
+    background: #eee; /* Cambio de color al pasar el ratón */
+  }
