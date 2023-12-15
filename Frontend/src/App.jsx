@@ -16,6 +16,8 @@ import LoginForm from "./components/login/LoginForm";
 import PublicacionesList from "./pages/Publicaciones/PublicacionesList";
 import PublicacionesEdit from "./pages/Publicaciones/PublicacionesEdit";
 import AnimalesDetails from "./pages/Animales/AnimalesDetails";
+import { PlusCircle } from "lucide-react";
+import Donacion from "./components/SolicitudDonacion/SolicitudDonacion";
 
 function App() {
   const [user, setUser] = useLocalStorage("user");
@@ -38,6 +40,11 @@ function App() {
 									text={"Publicaciones"}
 									link={"/publicaciones"}
 								/>
+								<SidebarItem
+									icon={<PlusCircle />}
+									text={"Solicitud de Donación"}
+									link={"/solicitud-donacion"}
+								/>
 							</Sidebar>
 						</div>
 					)}
@@ -51,8 +58,16 @@ function App() {
 								<Route path='/animales-edit' Component={AnimalesEdit} />
 							</Route>
 							<Route element={<ProtectedRoute user={user} />}>
-								<Route path='/animales-detail/:id' Component={AnimalesDetails} />
+								<Route
+									path='/animales-detail/:id'
+									Component={AnimalesDetails}
+								/>
 							</Route>
+
+							<Route element={<ProtectedRoute user={user} />}>
+								<Route path='/solicitud-donacion' Component={Donacion} />
+							</Route>
+						
 							<Route path='profile' Component={Profile}></Route>
 							<Route
 								path='/login'
